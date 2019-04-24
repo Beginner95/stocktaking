@@ -135,3 +135,114 @@ header nav > ul::after{
     transition: 0.5s;
 }
 /* End style menu */
+
+main section header{
+    margin-top: 2px;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(214,214,214,1);
+    -moz-box-shadow: 0 -1px 0 0 rgba(214,214,214,1);
+    box-shadow: 0 -1px 0 0 rgba(214,214,214,1);
+    background: #444444;
+}
+
+main section header h2{
+    padding: 10px 15px;
+    color: #b4b4b4;
+    font-size: 14px;
+}
+
+main section table{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+main .items{
+    height: 550px;
+    background: #e7e7e7;
+    overflow-y: scroll;
+}
+
+main .items .item-head{
+    font-weight: 700;
+}
+
+main .items .item-head th, main .items .item td{
+    border: 1px solid #3a3a3a;
+    padding: 4px 0;
+}
+
+main .items .item td:last-child,
+main .items .item td:nth-child(5),
+main .items .item td:nth-child(6),
+main .items .item td:nth-child(8){
+    padding: 0;
+}
+
+main .items .item td:last-child{
+    font-size: 0;
+    vertical-align: bottom;
+    padding-bottom: 1px;
+}
+
+main .items .item td a img{
+    width: 20px;
+}
+
+main .items .item td a:first-child img{
+    margin-right: 10px;
+}
+
+main .items .item td input[type="text"]{
+    margin: 0;
+    border: none;
+    text-align: center;
+    padding: 3px 0;
+    width: 60px;
+}
+
+main .items .item tr:nth-child(even){
+    background: #c6c6c6;
+}
+
+main .stock{
+    color: #b4b4b4;
+    margin-top: 2px;
+    padding: 5px;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.75);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.75);
+    background: #444444;
+    position: relative;
+}
+
+main .stock div{
+    margin: 10px;
+}
+
+main .block-btn{
+    margin-top: 2px;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(214,214,214,1);
+    -moz-box-shadow: 0 -1px 0 0 rgba(214,214,214,1);
+    box-shadow: 0 -1px 0 0 rgba(214,214,214,1);
+    background: #444444;
+    padding: 15px 10px;
+    font-size: 0;
+}
+
+main .block-btn a{
+    color: #b4b4b4;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+main .block-btn a:last-child{
+    margin-right: 0;
+}
+
+main .block-btn a:hover{
+    background: #3a3a3a;
+    color: #d4d4d4;
+    transition: 0.5s;
+}
