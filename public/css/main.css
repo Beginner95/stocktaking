@@ -44,6 +44,7 @@ table {
 
 body {
     -webkit-text-size-adjust: none;
+    background: #6E6E6E;
 }
 
 mark {
@@ -62,3 +63,75 @@ input, select, textarea {
     -ms-appearance: none;
     appearance: none;
 }
+
+/* Basic */
+/* Style menu */
+header nav{
+    position: relative;
+    z-index: 10;
+}
+
+header nav > ul::after{
+    display: block;
+    width: 100%;
+    height: 0;
+    clear: both;
+    content: "";
+}
+
+.top-menu{
+    background: #444444;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.75);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.75);
+    font-size: 0;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.top-menu li{
+    display: inline-block;
+}
+
+.top-menu li a{
+    color: #b4b4b4;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: default;
+    padding: 7px 10px;
+}
+
+.top-menu li a:hover, .top-menu li:hover > a{
+    background: #3a3a3a;
+    color: #d4d4d4;
+    transition: 0.5s;
+}
+
+.top-menu > li:hover ul{
+    display: block;
+}
+
+.top-menu ul{
+    display: none;
+    position: absolute;
+    width: 150px;
+    top: 30px;
+    background: #444444;
+    padding-bottom: 5px;
+    border: 1px solid #797979;
+}
+
+.top-menu ul li{
+    display: block;
+    padding: 6px;
+}
+
+.top-menu ul li a:hover{
+    background: transparent;
+}
+
+.top-menu ul li:hover{
+    background: #3a3a3a;
+    transition: 0.5s;
+}
+/* End style menu */
