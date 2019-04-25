@@ -42,4 +42,34 @@ abstract class Model
         return empty ($this->id);
     }
 
+    /**
+     * @throws DbException
+     */
+    protected function insert()
+    {
+        $columns = [];
+        $binds = [];
+        $data = [];
+
+        foreach ($this as $column => $value) {
+            if ('id' == $column) {
+                continue;
+            }
+            $columns[] = $column;
+            $binds[] = ':' . $column;
+            $data[':' . $column] = $value;
+        }
+
+        $sql = '
+            INSERT INTO ' . static::$table . '
+            (' . implode(', ', $columns) .')
+            VALUES
+            (' . implode(', ', $binds) .')
+        ';
+
+        $db = new Db();
+        $db->execute($sql, $data);
+        $this->id = $db->lastInsetId();
+    }
+
 }
