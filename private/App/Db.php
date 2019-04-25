@@ -21,6 +21,12 @@ class Db
         }
     }
 
+    /**
+     * @param string $sql
+     * @param array $data
+     * @return bool
+     * @throws DbException
+     */
     public function execute(string $sql, array $data = [])
     {
         $sth = $this->dbh->prepare($sql);
@@ -33,6 +39,13 @@ class Db
         return true;
     }
 
+    /**
+     * @param string $sql
+     * @param array $data
+     * @param null $class
+     * @return array
+     * @throws DbException
+     */
     public function query(string $sql, array $data = [], $class = null)
     {
         $sth = $this->dbh->prepare($sql);
@@ -49,6 +62,9 @@ class Db
         }
     }
 
+    /**
+     * @return string
+     */
     public function lastInsetId()
     {
         return $this->dbh->lastInsertId();
