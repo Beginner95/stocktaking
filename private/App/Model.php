@@ -72,4 +72,30 @@ abstract class Model
         $this->id = $db->lastInsetId();
     }
 
+    /**
+     * @throws DbException
+     */
+    protected function update()
+    {
+        $columns = [];
+        $data =[];
+        $data[':id'] = $this->id;
+
+        foreach ($this as $column => $value) {
+            if ('id' == $column) {
+                continue;
+            }
+            $columns[] = $column . '=:' . $column;
+            $data[':' . $column] = $value;
+        }
+
+        $sql = '
+            UPDATE ' . static::$table . '
+            SET ' . implode(', ', $columns) . '
+            WHERE id=:id
+        ';
+        $db = new Db();
+        $db->execute($sql, $data);
+    }
+
 }
