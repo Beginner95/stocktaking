@@ -20,4 +20,16 @@ class Db
             throw new DbException('Ошибка соединения с БД');
         }
     }
+
+    public function execute(string $sql, array $data = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute($data);
+
+        if (false === $result) {
+            throw new DbException('Ошибка запроса к БД');
+        }
+
+        return true;
+    }
 }
