@@ -37,4 +37,9 @@ abstract class Model
         return $data[0] ?? false;
     }
 
+    public function isNew()
+    {
+        return empty ($this->id);
+    }
+
 }
