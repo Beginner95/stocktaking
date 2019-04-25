@@ -110,4 +110,17 @@ abstract class Model
         }
     }
 
+    /**
+     * @throws DbException
+     */
+    public function delete()
+    {
+        if (false === $this->isNew()) {
+            $data = [':id' => $this->id];
+            $sql = 'DELETE FORM ' . static::$table . ' WHERE id=:id';
+            $db = new Db();
+            $db->execute($sql, $data);
+        }
+    }
+
 }
