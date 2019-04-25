@@ -32,4 +32,20 @@ class Db
 
         return true;
     }
+
+    public function query(string $sql, array $data = [], $class = null)
+    {
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute($data);
+
+        if (false === $result) {
+            throw new DbException('Ошибка запроса к БД');
+        }
+
+        if (null === $class) {
+            return $sth->fetchAll();
+        } else {
+            return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+        }
+    }
 }
