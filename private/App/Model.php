@@ -98,4 +98,16 @@ abstract class Model
         $db->execute($sql, $data);
     }
 
+    /**
+     * @throws DbException
+     */
+    public function save()
+    {
+        if (false === $this->isNew()) {
+            $this->update();
+        } else {
+            $this->insert();
+        }
+    }
+
 }
