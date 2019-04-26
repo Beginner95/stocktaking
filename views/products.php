@@ -48,9 +48,9 @@
                         <td><?php echo $product->name; ?></td>
                         <td><?php echo $product->category_id; ?></td>
                         <td><?php echo $product->manufacturer_id; ?></td>
-                        <td><input type="text" name="purchase-price" value="<?php echo $product->purchase_price; ?>"></td>
-                        <td><input type="text" name="markup" value="<?php echo $product->markup; ?>"></td>
-                        <td><span class="price"><?php echo $product->price; ?></span></td>
+                        <td><input type="text" name="purchase-price" value="<?php echo number_format($product->purchase_price, 2, '.', ' '); ?>"></td>
+                        <td><input type="text" name="markup" value="<?php echo number_format($product->markup, 2, '.', ' '); ?>"></td>
+                        <td><span class="price"><?php echo number_format($product->price, 2, '.', ' '); ?></span></td>
                         <td><input type="text" name="quantity" value="<?php echo $product->quantity; ?>"></td>
                         <td>
                             <a href="#" class="edit"><img src="/public/images/icon_edit.svg" title="Редактировать"></a>
