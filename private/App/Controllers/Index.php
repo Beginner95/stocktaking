@@ -46,6 +46,8 @@ class Index
             $product->manufacturer_id = intval($_POST['manufacturer-id']);
             $product->purchase_price = (float)$_POST['purchase-price'];
             $product->markup = (float)$_POST['markup'];
+            $product->quantity = intval($_POST['quantity']);
+            $product->date_added = date('Y-m-d H:i:s');
             $product->price = (float)$_POST['price'];
             $product->save();
         }
