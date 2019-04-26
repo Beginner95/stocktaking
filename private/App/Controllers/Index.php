@@ -50,4 +50,15 @@ class Index
             $product->save();
         }
     }
+
+    /**
+     * @throws \App\DbException
+     */
+    public function actionDelete()
+    {
+        $product = $this->getProduct();
+        if(null !== $product->id) {
+            $product->delete();
+        }
+    }
 }
