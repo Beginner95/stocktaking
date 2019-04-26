@@ -31,5 +31,6 @@ function ajax(method, url, params, callback){
     };
 
     request.open(method, url);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(params);
 }
