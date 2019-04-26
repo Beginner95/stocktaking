@@ -63,4 +63,14 @@ class Index
             $product->delete();
         }
     }
+
+
+    /**
+     * @throws \App\DbException
+     */
+    public function actionEdit()
+    {
+        $this->view->product = $this->getProduct();
+        $this->view->display(__DIR__ . '/../../../views/products.php');
+    }
 }
