@@ -16,6 +16,10 @@ function getQS(qs){
     return document.querySelector(qs);
 }
 
+function cE(cE){
+    return document.createElement(cE);
+}
+
 function c(str){
     console.log(str);
 }
