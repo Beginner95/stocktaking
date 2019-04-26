@@ -172,9 +172,9 @@ main .items .item-head th, main .items .item td{
 }
 
 main .items .item td:last-child,
-main .items .item td:nth-child(5),
 main .items .item td:nth-child(6),
-main .items .item td:nth-child(8){
+main .items .item td:nth-child(7),
+main .items .item td:nth-child(9){
     padding: 0;
 }
 
