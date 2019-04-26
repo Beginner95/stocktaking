@@ -197,7 +197,7 @@ main .items .item td input[type="text"]{
     border: none;
     text-align: center;
     padding: 3px 0;
-    width: 60px;
+    width: 90px;
 }
 
 main .items .item tr:nth-child(even){
