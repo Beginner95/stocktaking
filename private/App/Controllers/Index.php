@@ -32,4 +32,22 @@ class Index
         }
         return $product;
     }
+
+    /**
+     * @throws \App\DbException
+     */
+    public function actionSave()
+    {
+        $product = $this->getProduct();
+        if(!empty($_POST)) {
+            $product->code = strip_tags($_POST['code']);
+            $product->name = strip_tags($_POST['name']);
+            $product->category_id = intval($_POST['category-id']);
+            $product->manufacturer_id = intval($_POST['manufacturer-id']);
+            $product->purchase_price = (float)$_POST['purchase-price'];
+            $product->markup = (float)$_POST['markup'];
+            $product->price = (float)$_POST['price'];
+            $product->save();
+        }
+    }
 }
