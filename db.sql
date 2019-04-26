@@ -44,3 +44,4 @@ CREATE TABLE `stocktaking`.`products` (
   PRIMARY KEY (`id`),
   UNIQUE (`name`)
 ) ENGINE = InnoDB;
+ALTER TABLE `products` ADD `code` VARCHAR(50) NULL DEFAULT NULL AFTER `manufacturer_id`;
