@@ -8,7 +8,7 @@ use App\Model;
 class Product
     extends Model
 {
-    public static $table = 'product';
+    public static $table = 'products';
     public $id;
     public $category_id;
     public $manufacturer_id;
