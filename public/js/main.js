@@ -1,3 +1,4 @@
+var showingTooltip;
 document.addEventListener('DOMContentLoaded', function(){
 
 });
@@ -18,6 +19,74 @@ function getQS(qs){
 
 function cE(cE){
     return document.createElement(cE);
+}
+
+document.onmouseover = function(e) {
+    let target = e.target;
+
+    while (target !== this) {
+        var tooltip = target.getAttribute('data-tooltip');
+        if (tooltip) break;
+        target = target.parentNode;
+    }
+
+    if (!tooltip) return;
+
+    showingTooltip = showTooltip(tooltip, target);
+};
+
+document.onmouseout = function() {
+    if (showingTooltip) {
+        document.body.removeChild(showingTooltip);
+        showingTooltip = false;
+    }
+};
+
+function showTooltip(text, elem) {
+
+    let tooltipElem = cE('div');
+    tooltipElem.className = 'tooltip';
+    tooltipElem.innerHTML = text;
+    document.body.appendChild(tooltipElem);
+
+    let coords = elem.getBoundingClientRect();
+
+    let left = coords.left + (elem.offsetWidth - tooltipElem.offsetWidth) / 2;
+    if (left < 0) {
+        left = 0;
+    }
+
+    let top = coords.top - tooltipElem.offsetHeight - 5;
+
+    if (top < 0) {
+        top = coords.top + elem.offsetHeight + 5;
+    }
+
+    tooltipElem.style.left = left + 'px';
+    tooltipElem.style.top = top + 'px';
+
+    return tooltipElem;
+}
+
+function showCover() {
+    let coverDiv = cE('div');
+    coverDiv.id = 'cover-div';
+    document.body.appendChild(coverDiv);
+}
+
+function hideCover() {
+    document.body.removeChild(getId('cover-div'));
+}
+
+function showPrompt(text) {
+    showCover();
+    let container = getId('prompt-form-container');
+    getId('prompt-message').innerHTML = text;
+    getId('yes').onclick = function() {
+        hideCover();
+        container.style.display = 'none';
+    };
+    container.style.display = 'block';
 }
 
 function c(str){
