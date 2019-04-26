@@ -41,17 +41,17 @@
                 </thead>
                 <tbody class="item">
                 <?php if (!empty($products)) : ?>
-                    <?php $i = 1; foreach ($products as $product) : ?>
-                    <tr id="<?php echo $product->id; ?> ">
+                    <?php $i = 1; foreach ($products as $prod) : ?>
+                    <tr id="<?php echo $prod->id; ?> ">
                         <td><?php echo $i; ?></td>
-                        <td><?php echo $product->code; ?></td>
-                        <td><?php echo $product->name; ?></td>
-                        <td><?php echo $product->category_id; ?></td>
-                        <td><?php echo $product->manufacturer_id; ?></td>
-                        <td><input type="text" name="purchase-price" value="<?php echo number_format($product->purchase_price, 2, '.', ' '); ?>"></td>
-                        <td><input type="text" name="markup" value="<?php echo number_format($product->markup, 2, '.', ' '); ?>"></td>
-                        <td><span class="price"><?php echo number_format($product->price, 2, '.', ' '); ?></span></td>
-                        <td><input type="text" name="quantity" value="<?php echo $product->quantity; ?>"></td>
+                        <td><?php echo $prod->code; ?></td>
+                        <td><?php echo $prod->name; ?></td>
+                        <td><?php echo $prod->category_id; ?></td>
+                        <td><?php echo $prod->manufacturer_id; ?></td>
+                        <td><input type="text" name="prod-purchase-price" value="<?php echo number_format($prod->purchase_price, 2, '.', ' '); ?>"></td>
+                        <td><input type="text" name="prod-markup" value="<?php echo number_format($prod->markup, 2, '.', ' '); ?>"></td>
+                        <td><span class="prod-price"><?php echo number_format($prod->price, 2, '.', ' '); ?></span></td>
+                        <td><input type="text" name="prod-quantity" value="<?php echo $prod->quantity; ?>"></td>
                         <td>
                             <a href="#" class="edit"><img src="/public/images/icon_edit.svg" title="Редактировать"></a>
                             <a href="#" class="delete"><img src="/public/images/icon_delete.svg" title="Удалить"></a>
