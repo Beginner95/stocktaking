@@ -12,6 +12,7 @@ class Product
     public $id;
     public $category_id;
     public $manufacturer_id;
+    public $code;
     public $name;
     public $purchase_price;
     public $markup;
