@@ -17,7 +17,7 @@ abstract class Controller
             return false;
         } else {
             $actMethodName = 'action' . $action;
-            return $this->$actMethodName;
+            return $this->$actMethodName();
         }
     }
 
