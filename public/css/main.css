@@ -246,3 +246,66 @@ main .block-btn a:hover{
     color: #d4d4d4;
     transition: 0.5s;
 }
+
+.modal-form{
+    display: none;
+    width: 500px;
+    height: 405px;
+    border: 1px solid #b4b4b4;
+    background: #444444;
+    padding: 15px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.modal-form .modal-form-content fieldset{
+    padding: 20px 0;
+    border: 1px solid #d4d4d4;
+}
+
+.modal-form .modal-form-content legend{
+    color: #d4d4d4;
+    padding: 5px;
+}
+
+.modal-form .modal-form-content label{
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    text-align: right;
+    font-size: 14px;
+    color: #d4d4d4;
+    margin: 5px;
+}
+
+.modal-form .modal-form-content label span{
+    color: red;
+}
+
+.modal-form .modal-form-content input{
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    border: none;
+    padding: 5px;
+    width: 350px;
+}
+
+.modal-form .modal-form-content a{
+    color: #b4b4b4;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 20px;
+    background: #404040;
+}
+
+.modal-form .modal-form-content a:hover{
+    background: #3a3a3a;
+    color: #d4d4d4;
+    transition: 0.5s;
+}
