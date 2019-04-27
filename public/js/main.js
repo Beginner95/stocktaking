@@ -80,6 +80,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
         return false;
     };
+
+    let btn_delete = getQSA('.delete');
+    for (let i = 0; i < btn_delete.length; i++) {
+        btn_delete[i].onclick = function() {
+            let product = btn_delete[i].parentNode.parentNode;
+            let params = '?id='+product.getAttribute('id');
+            ajax('GET', '/index/delete/'+params, '', function (data) {
+                if (data === '') {
+                    product.remove();
+                    showPrompt('Товар ' + product.childNodes[5].innerText + ' был успешно удален!', '', '');
+                }
+            })
+        }
+    }
+
 });
 
 /* Functions */
@@ -94,6 +109,10 @@ function getCN(cn){
 
 function getQS(qs){
     return document.querySelector(qs);
+}
+
+function getQSA(qs){
+    return document.querySelectorAll(qs);
 }
 
 function cE(cE){
