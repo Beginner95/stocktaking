@@ -46,8 +46,8 @@
                         <td><?php echo $i; ?></td>
                         <td><?php echo $prod->code; ?></td>
                         <td><?php echo $prod->name; ?></td>
-                        <td><?php echo $prod->category_id; ?></td>
-                        <td><?php echo $prod->manufacturer_id; ?></td>
+                        <td><?php echo $prod->category->title; ?></td>
+                        <td><?php echo $prod->manufacturer->title; ?></td>
                         <td><input type="text" name="prod-purchase-price" value="<?php echo number_format($prod->purchase_price, 2, '.', ' '); ?>"></td>
                         <td><input type="text" name="prod-markup" value="<?php echo number_format($prod->markup, 2, '.', ' '); ?>"></td>
                         <td><span class="prod-price"><?php echo number_format($prod->price, 2, '.', ' '); ?></span></td>
