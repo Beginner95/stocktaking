@@ -1,6 +1,85 @@
 var showingTooltip;
 document.addEventListener('DOMContentLoaded', function(){
+    let add_product = getId('add_product');
+    let save = getId('save');
+    let modal_form = getQS('.modal-form');
+    let close_modal_form = getQS('.btn-close');
+    let inputs = modal_form.getElementsByTagName('input');
 
+    close_modal_form.onclick = function() {
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].value = '';
+        }
+        modal_form.style.display = 'none';
+        hideCover();
+    };
+
+    add_product.onclick = function () {
+        modal_form.style.display = 'block';
+        showCover();
+        return false;
+    };
+
+    let purchase_price = getQS('input[name="purchase-price"]');
+    let markup = getQS('input[name="markup"]');
+    let price = getQS('input[name="price"]');
+    let quantity = getQS('input[name="quantity"]')
+
+    purchase_price.oninput = function(){
+        purchase_price.value = purchase_price.value.replace(/[^0-9.]+/g, '');
+        price.value = +purchase_price.value + +markup.value;
+    };
+
+    markup.oninput = function(){
+        markup.value = markup.value.replace(/[^0-9.]+/g, '');
+        price.value = +purchase_price.value + +markup.value;
+    };
+
+    quantity.onkeypress = function(e){
+        e = e || event;
+
+        if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+        let chr = getChar(e);
+
+        if (chr == null) return;
+
+        if (chr < '0' || chr > '9') {
+            return false;
+        }
+    };
+
+    save.onclick = function () {
+        let code = getQS('input[name="code"]').value;
+        let name = getQS('input[name="name"]').value;
+        let category_id = getQS('input[name="category-id"]').value;
+        let manufacturer_id = getQS('input[name="manufacturer-id"]').value;
+        let purchase_price = getQS('input[name="purchase-price"]').value;
+        let markup = getQS('input[name="markup"]').value;
+        let price = getQS('input[name="price"]').value;
+        let quantity = getQS('input[name="quantity"]').value;
+        let params = 'code='+code+'&name='+name+'&category-id='+category_id+'&manufacturer-id='+manufacturer_id+'&purchase-price='+purchase_price+'&markup='+markup+'&price='+price+'&quantity='+quantity;
+
+        if (name === '' || purchase_price === '' || markup === '' || quantity === '') {
+            showPrompt('Заполните обязательные поля!', false, '');
+        } else {
+            ajax('POST', '/index/save', params, function (data) {
+                if (data === '') {
+                    hideCover();
+                    showPrompt('Товар ' + name + ' успешно добавлен!', true, '/index');
+                    for (let i = 0; i < inputs.length; i++) {
+                        inputs[i].value = '';
+                    }
+                } else {
+                    hideCover();
+                    showPrompt('При добавлении товара возникла ошибка!', false, '');
+                }
+            });
+            modal_form.style.display = 'none';
+        }
+
+        return false;
+    };
 });
 
 /* Functions */
@@ -78,12 +157,15 @@ function hideCover() {
     document.body.removeChild(getId('cover-div'));
 }
 
-function showPrompt(text) {
+function showPrompt(text, status, url) {
     showCover();
     let container = getId('prompt-form-container');
     getId('prompt-message').innerHTML = text;
     getId('yes').onclick = function() {
         hideCover();
+        if (status === true) {
+            window.location = url;
+        }
         container.style.display = 'none';
     };
     container.style.display = 'block';
