@@ -30,7 +30,7 @@ abstract class Model
     {
         $db = new Db();
         $data = $db->query(
-            'SELECT * FROM ' . static::$table . 'WHERE id=:id',
+            'SELECT * FROM ' . static::$table . ' WHERE id=:id',
             [':id' => $id],
             static::class
         );
@@ -117,7 +117,7 @@ abstract class Model
     {
         if (false === $this->isNew()) {
             $data = [':id' => $this->id];
-            $sql = 'DELETE FORM ' . static::$table . ' WHERE id=:id';
+            $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
             $db = new Db();
             $db->execute($sql, $data);
         }
