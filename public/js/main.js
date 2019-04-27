@@ -2,20 +2,20 @@ var showingTooltip;
 document.addEventListener('DOMContentLoaded', function(){
     let add_product = getId('add_product');
     let save = getId('save');
-    let modal_form = getQS('.modal-form');
+    let modal_form_product = getQS('.modal-form-product');
     let close_modal_form = getQS('.btn-close');
-    let inputs = modal_form.getElementsByTagName('input');
+    let inputs = modal_form_product.getElementsByTagName('input');
 
     close_modal_form.onclick = function() {
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].value = '';
         }
-        modal_form.style.display = 'none';
+        modal_form_product.style.display = 'none';
         hideCover();
     };
 
     add_product.onclick = function () {
-        modal_form.style.display = 'block';
+        modal_form_product.style.display = 'block';
         showCover();
         return false;
     };
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     showPrompt('При добавлении товара возникла ошибка!', false, '');
                 }
             });
-            modal_form.style.display = 'none';
+            modal_form_product.style.display = 'none';
         }
 
         return false;

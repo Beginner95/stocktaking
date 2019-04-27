@@ -73,7 +73,7 @@
         </section>
     </main>
 </div>
-<div class="modal-form">
+<div class="modal-form-product">
     <div class="modal-form-content">
         <fieldset>
             <legend>Редактирование товара</legend>
