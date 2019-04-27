@@ -258,6 +258,25 @@ main .block-btn a:hover{
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+    z-index: 9999;
+}
+
+.btn-close{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    color: #b4b4b4;
+    padding: 0 3px 3px;
+    background: #404040;
+    cursor: default;
+    top: 11px;
+    right: -5px;
+}
+
+.btn-close:hover{
+    background: #3a3a3a;
+    color: #d4d4d4;
+    transition: 0.5s;
 }
 
 .modal-form .modal-form-content fieldset{

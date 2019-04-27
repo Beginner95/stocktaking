@@ -89,6 +89,7 @@
         </fieldset>
         <a href="#" id="save">Сохранить</a>
     </div>
+    <div class="btn-close">x</div>
 </div>
 
 <div id="prompt-form-container">
