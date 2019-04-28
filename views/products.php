@@ -58,6 +58,10 @@
                         </td>
                     </tr>
                     <?php $i++; endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="10">Нет товаров!</td>
+                    </tr>
                 <?php endif; ?>
                 </tbody>
             </table>
@@ -76,7 +80,7 @@
 <div class="modal-form-product">
     <div class="modal-form-content">
         <fieldset>
-            <legend>Редактирование товара</legend>
+            <legend class="modal-title"></legend>
             <input type="hidden" name="id" value="<?php echo $product->id; ?>">
             <label for="code">Артикул</label><input type="text" name="code" id="code" value="<?php echo $product->code; ?>"><br>
             <label for="name">Имя товара <span>*</span></label><input type="text" name="name" id="name" value="<?php echo $product->name; ?>" required><br>

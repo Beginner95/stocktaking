@@ -71,6 +71,10 @@ class Index
     public function actionEdit()
     {
         $this->view->product = $this->getProduct();
-        $this->view->display(__DIR__ . '/../../../views/products.php');
+        if ($_GET['ajax'] === 'true') {
+            echo json_encode($this->view->product);
+        } else {
+            $this->view->display(__DIR__ . '/../../../views/products.php');
+        }
     }
 }

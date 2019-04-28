@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
     };
 
     add_product.onclick = function () {
+        getQS('.modal-title').innerHTML = 'Добавление товара';
         modal_form_product.style.display = 'block';
         showCover();
         return false;
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function(){
     };
 
     save.onclick = function () {
+        let id = getQS('input[name="id"]').value;
         let code = getQS('input[name="code"]').value;
         let name = getQS('input[name="name"]').value;
         let category_id = getQS('input[name="category-id"]').value;
@@ -58,23 +60,39 @@ document.addEventListener('DOMContentLoaded', function(){
         let markup = getQS('input[name="markup"]').value;
         let price = getQS('input[name="price"]').value;
         let quantity = getQS('input[name="quantity"]').value;
-        let params = 'code='+code+'&name='+name+'&category-id='+category_id+'&manufacturer-id='+manufacturer_id+'&purchase-price='+purchase_price+'&markup='+markup+'&price='+price+'&quantity='+quantity;
 
         if (name === '' || purchase_price === '' || markup === '' || quantity === '') {
             showPrompt('Заполните обязательные поля!', false, '');
         } else {
-            ajax('POST', '/index/save', params, function (data) {
-                if (data === '') {
-                    hideCover();
-                    showPrompt('Товар ' + name + ' успешно добавлен!', true, '/index');
-                    for (let i = 0; i < inputs.length; i++) {
-                        inputs[i].value = '';
+            if (id !== '') {
+                let params = 'id=' + id + '&code=' + code + '&name=' + name + '&category-id=' + category_id + '&manufacturer-id=' + manufacturer_id + '&purchase-price=' + purchase_price + '&markup=' + markup + '&price=' + price + '&quantity=' + quantity;
+                ajax('POST', '/index/save/?id='+id, params, function (data) {
+                    if (data === '') {
+                        hideCover();
+                        showPrompt('Товар ' + name + ' успешно обнавлен!', true, '/index');
+                        for (let i = 0; i < inputs.length; i++) {
+                            inputs[i].value = '';
+                        }
+                    } else {
+                        hideCover();
+                        showPrompt('При добавлении товара возникла ошибка!', false, '');
                     }
-                } else {
-                    hideCover();
-                    showPrompt('При добавлении товара возникла ошибка!', false, '');
-                }
-            });
+                });
+            } else {
+                let params = 'code=' + code + '&name=' + name + '&category-id=' + category_id + '&manufacturer-id=' + manufacturer_id + '&purchase-price=' + purchase_price + '&markup=' + markup + '&price=' + price + '&quantity=' + quantity;
+                ajax('POST', '/index/save', params, function (data) {
+                    if (data === '') {
+                        hideCover();
+                        showPrompt('Товар ' + name + ' успешно добавлен!', true, '/index');
+                        for (let i = 0; i < inputs.length; i++) {
+                            inputs[i].value = '';
+                        }
+                    } else {
+                        hideCover();
+                        showPrompt('При добавлении товара возникла ошибка!', false, '');
+                    }
+                });
+            }
             modal_form_product.style.display = 'none';
         }
 
@@ -95,6 +113,54 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
+    let btn_edit = getQSA('.edit');
+    for (let i = 0; i < btn_edit.length; i++) {
+        btn_edit[i].onclick = function () {
+            getQS('.modal-title').innerHTML = 'Редактирование товара';
+            let product = btn_edit[i].parentNode.parentNode;
+            let params = '?id=' + product.getAttribute('id') +'&ajax=true';
+            ajax('GET', '/index/edit/' + params, '', function (data) {
+                let inputs = modal_form_product.getElementsByTagName('input');
+                let product = JSON.parse(data);
+                for(let i = 0; i < inputs.length; i++) {
+                    switch (inputs[i].name) {
+                        case 'id':
+                            inputs[i].value = product.id;
+                            break;
+                        case 'code':
+                            inputs[i].value = product.code;
+                            break;
+                        case 'name':
+                            inputs[i].value = product.name;
+                            break;
+                        case 'category-id':
+                            inputs[i].value = product.category_id;
+                            break;
+                        case 'manufacturer-id':
+                            inputs[i].value = product.manufacturer_id;
+                            break;
+                        case 'purchase-price':
+                            inputs[i].value = product.purchase_price;
+                            break;
+                        case 'markup':
+                            inputs[i].value = product.markup;
+                            break;
+                        case 'price':
+                            inputs[i].value = product.price;
+                            break;
+                        case 'quantity':
+                            inputs[i].value = product.quantity;
+                            break;
+                        default:
+                            showPrompt('Неизвестное поле', false, '');
+                    }
+                }
+                modal_form_product.style.display = 'block';
+                showCover();
+                return false;
+            })
+        }
+    }
 });
 
 /* Functions */
