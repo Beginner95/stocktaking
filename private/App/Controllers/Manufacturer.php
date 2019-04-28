@@ -60,4 +60,15 @@ class Manufacturer
             $this->view->display(__DIR__ . '/../../../views/manufacturers.php');
         }
     }
+
+    /**
+     * @throws \App\DbException
+     */
+    public function actionDelete()
+    {
+        $manufacturer = $this->getManufacturer();
+        if (null !== $manufacturer->id) {
+            $manufacturer->delete();
+        }
+    }
 }
