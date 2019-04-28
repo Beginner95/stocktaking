@@ -71,6 +71,7 @@ class Index
     public function actionEdit()
     {
         $this->view->product = $this->getProduct();
+        $this->view->product->categories = \App\Model\Category::findAll();
         if ($_GET['ajax'] === 'true') {
             echo json_encode($this->view->product);
         } else {

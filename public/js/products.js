@@ -15,6 +15,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
     add_product.onclick = function () {
         getQS('.modal-title').innerHTML = 'Добавление товара';
+        ajax('GET', '/index/edit/?id=&ajax=true', '', function (data) {
+            c(data);
+            let product = JSON.parse(data);
+            let select = getQS('.select');
+            for (let j = 0; j < product.categories.length; j++) {
+                let el = cE('option');
+                el.value = product.categories[j].id;
+                el.textContent = product.categories[j].title;
+                select.appendChild(el);
+            }
+        });
         modal_form_product.style.display = 'block';
         showCover();
         return false;
@@ -53,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function(){
         let id = getQS('input[name="id"]').value;
         let code = getQS('input[name="code"]').value;
         let name = getQS('input[name="name"]').value;
-        let category_id = getQS('input[name="category-id"]').value;
+        let category_id = getQS('select[name="category-id"]').value;
         let manufacturer_id = getQS('input[name="manufacturer-id"]').value;
         let purchase_price = getQS('input[name="purchase-price"]').value;
         let markup = getQS('input[name="markup"]').value;
@@ -121,6 +132,16 @@ document.addEventListener('DOMContentLoaded', function(){
             ajax('GET', '/index/edit/' + params, '', function (data) {
                 let inputs = modal_form_product.getElementsByTagName('input');
                 let product = JSON.parse(data);
+                let select = getQS('.select');
+                for (let j = 0; j < product.categories.length; j++) {
+                    let el = cE('option');
+                    if (product.categories[j].id === product.category_id) {
+                        el.selected = true;
+                    }
+                    el.value = product.categories[j].id;
+                    el.textContent = product.categories[j].title;
+                    select.appendChild(el);
+                }
                 for(let i = 0; i < inputs.length; i++) {
                     switch (inputs[i].name) {
                         case 'id':
@@ -131,9 +152,6 @@ document.addEventListener('DOMContentLoaded', function(){
                             break;
                         case 'name':
                             inputs[i].value = product.name;
-                            break;
-                        case 'category-id':
-                            inputs[i].value = product.category_id;
                             break;
                         case 'manufacturer-id':
                             inputs[i].value = product.manufacturer_id;
