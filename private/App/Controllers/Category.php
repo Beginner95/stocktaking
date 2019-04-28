@@ -58,4 +58,15 @@ class Category
         }
     }
 
+    /**
+     * @throws \App\DbException
+     */
+    public function actionDelete()
+    {
+        $category = $this->getCategory();
+        if (null !== $category->id) {
+            $category->delete();
+        }
+    }
+
 }
