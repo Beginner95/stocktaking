@@ -25,7 +25,7 @@ CREATE TABLE `stocktaking`.`categories` (
 CREATE TABLE `stocktaking`.`manufacturers` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `title` VARCHAR(255) NOT NULL ,
-  `desctiption` VARCHAR(255) NULL DEFAULT NULL ,
+  `description` VARCHAR(255) NULL DEFAULT NULL ,
   `date_added` DATETIME NOT NULL ,
   PRIMARY KEY (`id`), UNIQUE (`title`)
 ) ENGINE = InnoDB;
