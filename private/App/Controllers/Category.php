@@ -36,7 +36,7 @@ class Category
      */
     public function actionSave()
     {
-        $category = new \App\Model\Category();
+        $category = $this->getCategory();
         if (!empty($_POST)) {
             $category->title = strip_tags($_POST['title']);
             $category->description = strip_tags($_POST['description']);
