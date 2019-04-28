@@ -90,3 +90,4 @@
 
 
 <?php include __DIR__ . '/footer.php'; ?>
+<script src="/public/js/products.js"></script>
