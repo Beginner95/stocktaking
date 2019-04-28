@@ -15,7 +15,7 @@ CREATE TABLE `stocktaking`.`categories` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `parent_id` INT NULL DEFAULT NULL ,
   `title` VARCHAR(255) NOT NULL ,
-  `description` INT NOT NULL ,
+  `description` VARCHAR(255) NULL DEFAULT NULL,
   `date_added` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE (`title`)
