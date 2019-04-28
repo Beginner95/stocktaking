@@ -323,6 +323,16 @@ main .block-btn a:hover{
     width: 350px;
 }
 
+.modal-form-product .modal-form-content select,
+.modal-form-category .modal-form-content select{
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 5px 5px 1px;
+    border: none;
+    padding: 5px;
+    width: 360px;
+}
+
 .modal-form-product .modal-form-content a,
 .modal-form-category .modal-form-content a{
     color: #b4b4b4;
