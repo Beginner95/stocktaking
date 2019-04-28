@@ -31,4 +31,18 @@ class Category
         return $category;
     }
 
+    /**
+     * @throws \App\DbException
+     */
+    public function actionSave()
+    {
+        $category = new \App\Model\Category();
+        if (!empty($_POST)) {
+            $category->title = strip_tags($_POST['title']);
+            $category->description = strip_tags($_POST['description']);
+            $category->date_added = date('Y-m-d H:i:s');
+            $category->save();
+        }
+    }
+
 }
