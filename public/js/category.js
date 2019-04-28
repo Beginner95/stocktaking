@@ -33,4 +33,47 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    let save = getId('save');
+    save.onclick = function () {
+        let id = getQS('input[name="id"]').value;
+        let title = getQS('input[name="title"]').value;
+        let description = getQS('input[name="description"]').value;
+
+        if (title === '') {
+            showPrompt('Заполните обязательные поля!', false, '');
+        } else {
+            if (id !== '') {
+                let params = 'id=' + id + '&title=' + title + '&description=' + description;
+                ajax('POST', '/category/save/?id='+id, params, function (data) {
+                    if (data === '') {
+                        hideCover();
+                        showPrompt('Товар ' + title + ' успешно обнавлен!', true, '/category');
+                        for (let i = 0; i < inputs.length; i++) {
+                            inputs[i].value = '';
+                        }
+                    } else {
+                        hideCover();
+                        showPrompt('При добавлении товара возникла ошибка!', false, '');
+                    }
+                });
+            } else {
+                let params = 'title=' + title + '&description=' + description;
+                ajax('POST', '/category/save', params, function (data) {
+                    if (data === '') {
+                        hideCover();
+                        showPrompt('Категория ' + title + ' успешно добавлена!', true, '/category');
+                        for (let i = 0; i < inputs.length; i++) {
+                            inputs[i].value = '';
+                        }
+                    } else {
+                        hideCover();
+                        showPrompt('При добавлении товара возникла ошибка!', false, '');
+                    }
+                });
+            }
+            modal_form_category.style.display = 'none';
+        }
+        return false;
+    };
+
 });
