@@ -47,4 +47,17 @@ class Manufacturer
             $manufacturer->save();
         }
     }
+
+    /**
+     * @throws \App\DbException
+     */
+    public function actionEdit()
+    {
+        $this->view->manufacturer = $this->getManufacturer();
+        if ($_GET['ajax'] === 'true') {
+            echo json_encode($this->view->manufacturer);
+        } else {
+            $this->view->display(__DIR__ . '/../../../views/manufacturers.php');
+        }
+    }
 }
