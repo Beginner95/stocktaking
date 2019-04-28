@@ -57,8 +57,6 @@
         </section>
         <section class="block-btn">
             <a href="#" class="add-product" id="add_product">Добавить товар</a>
-            <a href="#" class="add-category">Добавить категорию</a>
-            <a href="#" class="add-manufacturer">Добавить производителя</a>
         </section>
     </main>
 </div>
