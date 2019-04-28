@@ -45,4 +45,17 @@ class Category
         }
     }
 
+    /**
+     * @throws \App\DbException
+     */
+    public function actionEdit()
+    {
+        $this->view->category = $this->getCategory();
+        if ($_GET['ajax'] === 'true') {
+            echo json_encode($this->view->category);
+        } else {
+            $this->view->display(__DIR__ . '/../../../views/categories.php');
+        }
+    }
+
 }
