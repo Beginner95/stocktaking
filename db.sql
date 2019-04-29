@@ -35,6 +35,7 @@ CREATE TABLE `stocktaking`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `category_id` INT NULL DEFAULT NULL ,
   `manufacturer_id` INT NULL DEFAULT NULL ,
+  `code` VARCHAR(50) NULL DEFAULT NULL ,
   `name` VARCHAR(255) NOT NULL ,
   `purchase_price` DECIMAL(15,4) NOT NULL DEFAULT '0.0000' ,
   `markup` DECIMAL(15,4) NOT NULL DEFAULT '0.0000' ,
@@ -44,4 +45,3 @@ CREATE TABLE `stocktaking`.`products` (
   PRIMARY KEY (`id`),
   UNIQUE (`name`)
 ) ENGINE = InnoDB;
-ALTER TABLE `products` ADD `code` VARCHAR(50) NULL DEFAULT NULL AFTER `manufacturer_id`;
