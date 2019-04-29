@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
         ajax('GET', '/index/edit/?id=&ajax=true', '', function (data) {
             c(data);
             let product = JSON.parse(data);
-            let select = getQS('.select');
+            let select = getQS('.select-category');
             for (let j = 0; j < product.categories.length; j++) {
                 let el = cE('option');
                 el.value = product.categories[j].id;
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function(){
             ajax('GET', '/index/edit/' + params, '', function (data) {
                 let inputs = modal_form_product.getElementsByTagName('input');
                 let product = JSON.parse(data);
-                let select = getQS('.select');
+                let select = getQS('.select-category');
                 for (let j = 0; j < product.categories.length; j++) {
                     let el = cE('option');
                     if (product.categories[j].id === product.category_id) {
