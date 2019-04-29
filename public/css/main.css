@@ -162,6 +162,10 @@ main .items{
     overflow-y: scroll;
 }
 
+main .items table td, main .items table th{
+    vertical-align: middle;
+}
+
 main .items .item-head{
     font-weight: 700;
 }
@@ -180,7 +184,6 @@ main .items .item td:nth-child(9){
 
 main .items .item td:last-child{
     font-size: 0;
-    vertical-align: bottom;
     padding-bottom: 1px;
 }
 
