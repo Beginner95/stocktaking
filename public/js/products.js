@@ -18,12 +18,20 @@ document.addEventListener('DOMContentLoaded', function(){
         ajax('GET', '/index/edit/?id=&ajax=true', '', function (data) {
             c(data);
             let product = JSON.parse(data);
-            let select = getQS('.select-category');
+            let select_category = getQS('.select-category');
+            let select_manufacturer = getQS('.select-manufacturer');
             for (let j = 0; j < product.categories.length; j++) {
                 let el = cE('option');
                 el.value = product.categories[j].id;
                 el.textContent = product.categories[j].title;
-                select.appendChild(el);
+                select_category.appendChild(el);
+            }
+
+            for (let j = 0; j < product.manufacturers.length; j++) {
+                let el = cE('option');
+                el.value = product.manufacturers[j].id;
+                el.textContent = product.manufacturers[j].title;
+                select_manufacturer.appendChild(el);
             }
         });
         modal_form_product.style.display = 'block';
@@ -65,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function(){
         let code = getQS('input[name="code"]').value;
         let name = getQS('input[name="name"]').value;
         let category_id = getQS('select[name="category-id"]').value;
-        let manufacturer_id = getQS('input[name="manufacturer-id"]').value;
+        let manufacturer_id = getQS('select[name="manufacturer-id"]').value;
         let purchase_price = getQS('input[name="purchase-price"]').value;
         let markup = getQS('input[name="markup"]').value;
         let price = getQS('input[name="price"]').value;
@@ -132,7 +140,8 @@ document.addEventListener('DOMContentLoaded', function(){
             ajax('GET', '/index/edit/' + params, '', function (data) {
                 let inputs = modal_form_product.getElementsByTagName('input');
                 let product = JSON.parse(data);
-                let select = getQS('.select-category');
+                let select_category = getQS('.select-category');
+                let select_manufacturer = getQS('.select-manufacturer');
                 for (let j = 0; j < product.categories.length; j++) {
                     let el = cE('option');
                     if (product.categories[j].id === product.category_id) {
@@ -140,7 +149,14 @@ document.addEventListener('DOMContentLoaded', function(){
                     }
                     el.value = product.categories[j].id;
                     el.textContent = product.categories[j].title;
-                    select.appendChild(el);
+                    select_category.appendChild(el);
+                }
+
+                for (let j = 0; j < product.manufacturers.length; j++) {
+                    let el = cE('option');
+                    el.value = product.manufacturers[j].id;
+                    el.textContent = product.manufacturers[j].title;
+                    select_manufacturer.appendChild(el);
                 }
                 for(let i = 0; i < inputs.length; i++) {
                     switch (inputs[i].name) {
@@ -152,9 +168,6 @@ document.addEventListener('DOMContentLoaded', function(){
                             break;
                         case 'name':
                             inputs[i].value = product.name;
-                            break;
-                        case 'manufacturer-id':
-                            inputs[i].value = product.manufacturer_id;
                             break;
                         case 'purchase-price':
                             inputs[i].value = product.purchase_price;

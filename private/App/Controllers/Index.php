@@ -72,6 +72,7 @@ class Index
     {
         $this->view->product = $this->getProduct();
         $this->view->product->categories = \App\Model\Category::findAll();
+        $this->view->product->manufacturers = \App\Model\Manufacturer::findAll();
         if ($_GET['ajax'] === 'true') {
             echo json_encode($this->view->product);
         } else {

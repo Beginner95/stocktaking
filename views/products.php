@@ -68,10 +68,9 @@
             <label for="code">Артикул</label><input type="text" name="code" id="code" value="<?php echo $product->code; ?>"><br>
             <label for="name">Имя товара <span>*</span></label><input type="text" name="name" id="name" value="<?php echo $product->name; ?>" required><br>
             <label for="category">Категория</label>
-            <select name="category-id" class="select-category">
-            </select>
-            <!--input type="text" name="category-id" id="category" value="<?php //echo $product->category_id ;?>"><br-->
-            <label for="manufacturer">Производитель</label><input type="text" name="manufacturer-id" id="manufacturer" value="<?php echo $product->manufacturer_id ;?>"><br>
+            <select name="category-id" class="select-category"></select>
+            <label for="manufacturer">Производитель</label>
+            <select name="manufacturer-id" class="select-manufacturer"></select>
             <label for="purchase_price">Цена покупки <span>*</span></label><input type="text" name="purchase-price" id="purchase_price" value="<?php echo $product->purchase_price ;?>" required><br>
             <label for="markup">Наценка <span>*</span></label><input type="text" name="markup" id="markup" value="<?php echo $product->markup ;?>" required><br>
             <label for="price">Цена продажи</label><input type="text" name="price" id="price" disabled value="<?php echo $product->price; ?>"><br>
