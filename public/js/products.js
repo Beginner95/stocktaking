@@ -191,4 +191,65 @@ document.addEventListener('DOMContentLoaded', function(){
             })
         }
     }
+
+    let prod_purchase_price = getQSA('input[name="prod-purchase-price"]');
+    let prod_markup = getQSA('input[name="prod-markup"]');
+    let prod_price = getQSA('.prod-price');
+    let prod_quantity = getQSA('input[name="prod-quantity"]');
+
+    for(let i = 0; i < prod_purchase_price.length; i++) {
+        prod_purchase_price[i].oninput = function () {
+            prod_purchase_price[i].value = moneyFormat(prod_purchase_price[i].value.replace(/[^0-9.]+/g, ''));
+            prod_price[i].innerHTML = moneyFormat(+prod_purchase_price[i].value.replace(/ /g,'') + +prod_markup[i].value.replace(/ /g,''));
+        }
+
+        prod_markup[i].oninput = function () {
+            prod_markup[i].value = moneyFormat(prod_markup[i].value.replace(/[^0-9.]+/g, ''));
+            prod_price[i].innerHTML = moneyFormat(+prod_purchase_price[i].value.replace(/ /g,'') + +prod_markup[i].value.replace(/ /g,''));
+        }
+
+        prod_quantity[i].onkeypress = function (e) {
+            e = e || event;
+
+            if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+            let chr = getChar(e);
+
+            if (chr == null) return;
+
+            if (chr < '0' || chr > '9') {
+                return false;
+            }
+        }
+
+        prod_purchase_price[i].onchange = function () {
+            let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
+            edit(product_id);
+            saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
+        }
+
+        prod_markup[i].onchange = function () {
+            let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
+            edit(product_id);
+            saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
+        }
+
+        prod_quantity.onchange = function () {
+            let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
+            edit(product_id);
+            saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
+        }
+    }
+
+    
+
+    function edit(id) {
+        ajax('GET', 'index/edit/?id='+id+'&ajax=true', '', function (data) {});
+    }
+
+    function saveAjax(id, purchase_price, markup, price, quantity) {
+        let params = 'id=' + id + '&ajax=true&purchase-price=' + purchase_price.replace(/ /g, '') + '&markup=' + markup.replace(/ /g, '') + '&price=' + price.replace(/ /g, '') + '&quantity=' + quantity;
+        ajax('POST', '/index/save/?id='+id, params, function (data) {});
+    }
+
 });
