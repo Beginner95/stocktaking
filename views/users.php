@@ -55,8 +55,8 @@
             <input type="hidden" name="id" value="<?php echo $user->id; ?>">
             <label for="login">Логин <span>*</span></label>
             <input type="text" name="login" id="login" value="<?php echo $user->login; ?>"><br>
-            <label for="login">Пароль <span>*</span></label>
-            <input type="text" name="login" id="login" value="<?php echo $user->login; ?>"><br>
+            <label for="password">Пароль <span>*</span></label>
+            <input type="text" name="password" id="password" value="<?php echo $user->password; ?>"><br>
             <label for="first_name">Фамилия <span>*</span></label>
             <input type="text" name="first-name" id="first_name" value="<?php echo $user->first_name; ?>"><br>
             <label for="last_name">Имя <span>*</span></label>
