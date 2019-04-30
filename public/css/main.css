@@ -250,7 +250,7 @@ main .block-btn a:hover{
     transition: 0.5s;
 }
 
-.modal-form-product, .modal-form-category{
+.modal-form-product, .modal-form-category, .modal-form-user{
     display: none;
     width: 500px;
     height: 405px;
@@ -266,6 +266,10 @@ main .block-btn a:hover{
 
 .modal-form-category{
     height: 180px;
+}
+
+.modal-form-user{
+    height: 290px;
 }
 
 .btn-close{
@@ -287,6 +291,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content fieldset,
+.modal-form-user .modal-form-content fieldset,
 .modal-form-category .modal-form-content fieldset
 {
     padding: 20px 0;
@@ -294,6 +299,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content legend,
+.modal-form-user .modal-form-content legend,
 .modal-form-category .modal-form-content legend
 {
     color: #d4d4d4;
@@ -301,6 +307,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content label,
+.modal-form-user .modal-form-content label,
 .modal-form-category .modal-form-content label{
     display: inline-block;
     vertical-align: top;
@@ -312,11 +319,13 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content label span,
+.modal-form-user .modal-form-contentlabel span,
 .modal-form-category .modal-form-content label span{
     color: red;
 }
 
 .modal-form-product .modal-form-content input,
+.modal-form-user .modal-form-content input,
 .modal-form-category .modal-form-content input{
     display: inline-block;
     vertical-align: top;
@@ -337,6 +346,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content a,
+.modal-form-user .modal-form-content a,
 .modal-form-category .modal-form-content a{
     color: #b4b4b4;
     text-decoration: none;
@@ -349,6 +359,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content a:hover,
+.modal-form-user .modal-form-content a:hover,
 .modal-form-category .modal-form-content a:hover{
     background: #3a3a3a;
     color: #d4d4d4;
