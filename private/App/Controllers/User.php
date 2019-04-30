@@ -60,4 +60,16 @@ class User
 			$this->view->display(__DIR__ . '/../../../views/users');
 		}
 	}
+
+	/**
+     * @throws \App\DbException
+     */
+	public function actionDelete()
+	{
+		$user = $this->getUser();
+
+		if (null !== $user->id) {
+			$user->delete();
+		}
+	}
 }
