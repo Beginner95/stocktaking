@@ -319,7 +319,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content label span,
-.modal-form-user .modal-form-contentlabel span,
+.modal-form-user .modal-form-content label span,
 .modal-form-category .modal-form-content label span{
     color: red;
 }
