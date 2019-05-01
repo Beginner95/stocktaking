@@ -29,6 +29,7 @@
                                 <?php echo $u->last_name; ?> 
                                 <?php echo $u->second_name; ?>                                
                             </td>
+                            <td><?php echo $u->role; ?></td>
                             <td>
                                 <a href="#" class="edit"><img src="/public/images/icon_edit.svg" title="Редактировать"></a>
                                 <a href="#" class="delete"><img src="/public/images/icon_delete.svg" title="Удалить"></a>
@@ -63,6 +64,8 @@
             <input type="text" name="last-name" id="last_name" value="<?php echo $user->last_name; ?>"><br>
             <label for="second_name">Очество</label>
             <input type="text" name="second-name" id="second_name" value="<?php echo $user->second_name; ?>"><br>
+            <label for="second_name">Роль</label>
+            <select name="role"></select>
         </fieldset>
         <a href="#" id="save">Сохранить</a>
     </div>
