@@ -6,6 +6,7 @@ CREATE TABLE `stocktaking`.`users` (
   `first_name` VARCHAR(100) NOT NULL ,
   `last_name` VARCHAR(100) NOT NULL ,
   `second_name` VARCHAR(100) NULL DEFAULT NULL,
+  `role` VARCHAR(100) NOT NULL DEFAULT 'manager',
   PRIMARY KEY (`id`),
   UNIQUE (`login`)
 ) ENGINE = InnoDB;
