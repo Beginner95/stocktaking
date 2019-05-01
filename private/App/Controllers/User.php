@@ -43,6 +43,7 @@ class User
 			$user->first_name = strip_tags($_POST['first-name']);
 			$user->last_name = strip_tags($_POST['last-name']);
 			$user->second_name = strip_tags($_POST['second-name']);
+			$user->role = strip_tags($_POST['role']);
 			$user->save();
 		}
 	}
