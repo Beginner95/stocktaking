@@ -2,19 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
 	let add_user = getQS('.add-user');
 	let modal_form_user = getQS('.modal-form-user');
 	let close_modal_form = getQS('.btn-close');
-	let inputs = modal_form_user.getElementsByTagName('input');
+    let array_role = ['Manager', 'Administrator'];
+    let select_role = getQS('select[name="role"]');
 
     add_user.onclick = function () {
         getQS('.modal-title').innerHTML = 'Добавление пользователя';
+        select_role.innerHTML = '';
+        for (let i = 0; i < array_role.length; i++) {
+            let el = cE('option');
+            el.value = array_role[i];
+            el.textContent = array_role[i];
+            select_role.appendChild(el);
+        }
+
         modal_form_user.style.display = 'block';
         showCover();
         return false;
     };
 
     close_modal_form.onclick = function() {
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = '';
-        }
+        getId('user_form').reset();
         modal_form_user.style.display = 'none';
         hideCover();
     };
@@ -41,33 +48,30 @@ document.addEventListener('DOMContentLoaded', function() {
         let first_name = getQS('input[name="first-name"]').value;
         let last_name = getQS('input[name="last-name"]').value;
         let second_name = getQS('input[name="second-name"]').value;
+        let role = getQS('select[name="role"]').value;
 
         if (login === '' || password === '' || first_name === '' || last_name === '') {
             showPrompt('Заполните обязательные поля!', false, '');
         } else {
             if (id !== '') {
-                let params = 'id=' + id + '&login=' + login + '&password=' + password + '&first-name=' + first_name + '&last-name=' + last_name + '&second-name=' + second_name;
+                let params = 'id=' + id + '&login=' + login + '&password=' + password + '&first-name=' + first_name + '&last-name=' + last_name + '&second-name=' + second_name + '&role=' + role;
                 ajax('POST', '/user/save/?id='+id, params, function (data) {
                     if (data === '') {
                         hideCover();
                         showPrompt('Пользователь ' + login + ' успешно обнавлен!', true, '/user');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('user_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При обнавлении пользователя возникла ошибка!', false, '');
                     }
                 });
             } else {
-                let params = 'login=' + login + '&password=' + password + '&first-name=' + first_name + '&last-name=' + last_name + '&second-name=' + second_name;
+                let params = 'login=' + login + '&password=' + password + '&first-name=' + first_name + '&last-name=' + last_name + '&second-name=' + second_name + '&role=' + role;
                 ajax('POST', '/user/save', params, function (data) {
                     if (data === '') {
                         hideCover();
                         showPrompt('Пользователь ' + login + ' успешно добавлен!', true, '/user');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('user_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При добавлении пользователя возникла ошибка!', false, '');
@@ -88,6 +92,17 @@ document.addEventListener('DOMContentLoaded', function() {
             ajax('GET', '/user/edit/' + params, '', function (data) {
                 let inputs = modal_form_user.getElementsByTagName('input');
                 let user = JSON.parse(data);
+                select_role.innerHTML = '';
+                for (let i = 0; i < array_role.length; i++) {
+                    let el = cE('option');
+                    if (user.role === array_role[i]) {
+                        el.selected = true;
+                    }
+                    el.value = array_role[i];
+                    el.textContent = array_role[i];
+                    select_role.appendChild(el);
+                }
+
                 for(let i = 0; i < inputs.length; i++) {
                     switch (inputs[i].name) {
                         case 'id':
@@ -107,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             break;
                         case 'second-name':
                             inputs[i].value = user.second_name;
-                            break;            
+                            break;
                         default:
                             showPrompt('Неизвестное поле', false, '');
                     }
