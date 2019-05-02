@@ -250,7 +250,7 @@ main .block-btn a:hover{
     transition: 0.5s;
 }
 
-.modal-form-product, .modal-form-category, .modal-form-user{
+.modal-form-product, .modal-form-category, .modal-form-user, .modal-form-auth{
     display: none;
     width: 500px;
     height: 405px;
@@ -262,6 +262,11 @@ main .block-btn a:hover{
     top: 50%;
     transform: translate(-50%,-50%);
     z-index: 9999;
+}
+
+.modal-form-auth{
+    display: block;
+    height: 195px;
 }
 
 .modal-form-category{
@@ -291,6 +296,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content fieldset,
+.modal-form-auth .modal-form-content fieldset,
 .modal-form-user .modal-form-content fieldset,
 .modal-form-category .modal-form-content fieldset
 {
@@ -299,6 +305,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content legend,
+.modal-form-auth .modal-form-content legend,
 .modal-form-user .modal-form-content legend,
 .modal-form-category .modal-form-content legend
 {
@@ -307,6 +314,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content label,
+.modal-form-auth .modal-form-content label,
 .modal-form-user .modal-form-content label,
 .modal-form-category .modal-form-content label{
     display: inline-block;
@@ -319,12 +327,14 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content label span,
+.modal-form-auth .modal-form-content label span,
 .modal-form-user .modal-form-content label span,
 .modal-form-category .modal-form-content label span{
     color: red;
 }
 
 .modal-form-product .modal-form-content input,
+.modal-form-auth .modal-form-content input,
 .modal-form-user .modal-form-content input,
 .modal-form-category .modal-form-content input{
     display: inline-block;
@@ -336,6 +346,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content select,
+.modal-form-auth .modal-form-content select,
 .modal-form-user .modal-form-content select,
 .modal-form-category .modal-form-content select{
     display: inline-block;
@@ -351,6 +362,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content a,
+.modal-form-auth .modal-form-content a,
 .modal-form-user .modal-form-content a,
 .modal-form-category .modal-form-content a{
     color: #b4b4b4;
@@ -364,6 +376,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content a:hover,
+.modal-form-auth .modal-form-content a:hover,
 .modal-form-user .modal-form-content a:hover,
 .modal-form-category .modal-form-content a:hover{
     background: #3a3a3a;
