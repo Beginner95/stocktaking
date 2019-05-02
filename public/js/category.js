@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let modal_form_category = getQS('.modal-form-category');
     let add_category = getQS('.add-category');
     let close_modal_form = getQS('.btn-close');
-    let inputs = modal_form_category.getElementsByTagName('input');
 
     add_category.onclick = function () {
         getQS('.modal-title').innerHTML = 'Добавление категории';
@@ -12,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     close_modal_form.onclick = function() {
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = '';
-        }
+        getId('category_form').reset();
         modal_form_category.style.display = 'none';
         hideCover();
     };
@@ -48,9 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data === '') {
                         hideCover();
                         showPrompt('Категория ' + title + ' успешно обнавлена!', true, '/category');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('category_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При обнавлении категории возникла ошибка!', false, '');
@@ -62,9 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data === '') {
                         hideCover();
                         showPrompt('Категория ' + title + ' успешно добавлена!', true, '/category');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('category_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При добавлении категории возникла ошибка!', false, '');
@@ -106,5 +99,4 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         }
     }
-
 });

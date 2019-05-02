@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let modal_form_manufacturer = getQS('.modal-form-category');
     let add_manufacturer = getQS('.add-category');
     let close_modal_form = getQS('.btn-close');
-    let inputs = modal_form_manufacturer.getElementsByTagName('input');
 
     add_manufacturer.onclick = function () {
         getQS('.modal-title').innerHTML = 'Добавление производителя';
@@ -12,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     close_modal_form.onclick = function() {
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = '';
-        }
+        getId('manufacturer_form').reset();
         modal_form_manufacturer.style.display = 'none';
         hideCover();
     };
@@ -48,9 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data === '') {
                         hideCover();
                         showPrompt('Производитель ' + title + ' успешно обнавлена!', true, '/manufacturer');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('manufacturer_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При обнавлении производителя возникла ошибка!', false, '');
@@ -62,9 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data === '') {
                         hideCover();
                         showPrompt('Производитель ' + title + ' успешно добавлен!', true, '/manufacturer');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('manufacturer_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При добавлении производителя возникла ошибка!', false, '');
