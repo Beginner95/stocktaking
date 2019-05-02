@@ -62,20 +62,22 @@
 </div>
 <div class="modal-form-product">
     <div class="modal-form-content">
-        <fieldset>
-            <legend class="modal-title"></legend>
-            <input type="hidden" name="id" value="<?php echo $product->id; ?>">
-            <label for="code">Артикул</label><input type="text" name="code" id="code" value="<?php echo $product->code; ?>"><br>
-            <label for="name">Имя товара <span>*</span></label><input type="text" name="name" id="name" value="<?php echo $product->name; ?>" required><br>
-            <label for="category">Категория</label>
-            <select name="category-id" class="select-category"></select>
-            <label for="manufacturer">Производитель</label>
-            <select name="manufacturer-id" class="select-manufacturer"></select>
-            <label for="purchase_price">Цена покупки <span>*</span></label><input type="text" name="purchase-price" id="purchase_price" value="<?php echo $product->purchase_price ;?>" required><br>
-            <label for="markup">Наценка <span>*</span></label><input type="text" name="markup" id="markup" value="<?php echo $product->markup ;?>" required><br>
-            <label for="price">Цена продажи</label><input type="text" name="price" id="price" disabled value="<?php echo $product->price; ?>"><br>
-            <label for="quantity">Количество <span>*</span></label><input type="text" name="quantity" id="quantity" value="<?php echo $product->quantity ;?>" required><br>
-        </fieldset>
+        <form id="product_form">
+            <fieldset>
+                <legend class="modal-title"></legend>
+                <input type="hidden" name="id" value="<?php echo $product->id; ?>">
+                <label for="code">Артикул</label><input type="text" name="code" id="code" value="<?php echo $product->code; ?>"><br>
+                <label for="name">Имя товара <span>*</span></label><input type="text" name="name" id="name" value="<?php echo $product->name; ?>" required><br>
+                <label for="category">Категория</label>
+                <select name="category-id" class="select-category"></select>
+                <label for="manufacturer">Производитель</label>
+                <select name="manufacturer-id" class="select-manufacturer"></select>
+                <label for="purchase_price">Цена покупки <span>*</span></label><input type="text" name="purchase-price" id="purchase_price" value="<?php echo $product->purchase_price ;?>" required><br>
+                <label for="markup">Наценка <span>*</span></label><input type="text" name="markup" id="markup" value="<?php echo $product->markup ;?>" required><br>
+                <label for="price">Цена продажи</label><input type="text" name="price" id="price" disabled value="<?php echo $product->price; ?>"><br>
+                <label for="quantity">Количество <span>*</span></label><input type="text" name="quantity" id="quantity" value="<?php echo $product->quantity ;?>" required><br>
+            </fieldset>
+        </form>
         <a href="#" id="save">Сохранить</a>
     </div>
     <div class="btn-close">x</div>
