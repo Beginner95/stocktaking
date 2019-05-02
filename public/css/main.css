@@ -269,7 +269,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-user{
-    height: 290px;
+    height: 335px;
 }
 
 .btn-close{
@@ -336,6 +336,7 @@ main .block-btn a:hover{
 }
 
 .modal-form-product .modal-form-content select,
+.modal-form-user .modal-form-content select,
 .modal-form-category .modal-form-content select{
     display: inline-block;
     vertical-align: top;
@@ -343,6 +344,10 @@ main .block-btn a:hover{
     border: none;
     padding: 5px;
     width: 360px;
+}
+
+.modal-form-user .modal-form-content select{
+    margin: 5px 5px 5px 5px;
 }
 
 .modal-form-product .modal-form-content a,
