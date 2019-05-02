@@ -3,12 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
     let save = getId('save');
     let modal_form_product = getQS('.modal-form-product');
     let close_modal_form = getQS('.btn-close');
-    let inputs = modal_form_product.getElementsByTagName('input');
 
     close_modal_form.onclick = function() {
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = '';
-        }
+        getId('product_form').reset();
         modal_form_product.style.display = 'none';
         hideCover();
     };
@@ -16,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function(){
     add_product.onclick = function () {
         getQS('.modal-title').innerHTML = 'Добавление товара';
         ajax('GET', '/index/edit/?id=&ajax=true', '', function (data) {
-            c(data);
             let product = JSON.parse(data);
             let select_category = getQS('.select-category');
             let select_manufacturer = getQS('.select-manufacturer');
@@ -42,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let purchase_price = getQS('input[name="purchase-price"]');
     let markup = getQS('input[name="markup"]');
     let price = getQS('input[name="price"]');
-    let quantity = getQS('input[name="quantity"]')
+    let quantity = getQS('input[name="quantity"]');
 
     purchase_price.oninput = function(){
         purchase_price.value = purchase_price.value.replace(/[^0-9.]+/g, '');
@@ -88,9 +84,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     if (data === '') {
                         hideCover();
                         showPrompt('Товар ' + name + ' успешно обнавлен!', true, '/index');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('product_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При добавлении товара возникла ошибка!', false, '');
@@ -102,9 +96,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     if (data === '') {
                         hideCover();
                         showPrompt('Товар ' + name + ' успешно добавлен!', true, '/index');
-                        for (let i = 0; i < inputs.length; i++) {
-                            inputs[i].value = '';
-                        }
+                        getId('product_form').reset();
                     } else {
                         hideCover();
                         showPrompt('При добавлении товара возникла ошибка!', false, '');
@@ -201,12 +193,12 @@ document.addEventListener('DOMContentLoaded', function(){
         prod_purchase_price[i].oninput = function () {
             prod_purchase_price[i].value = moneyFormat(prod_purchase_price[i].value.replace(/[^0-9.]+/g, ''));
             prod_price[i].innerHTML = moneyFormat(+prod_purchase_price[i].value.replace(/ /g,'') + +prod_markup[i].value.replace(/ /g,''));
-        }
+        };
 
         prod_markup[i].oninput = function () {
             prod_markup[i].value = moneyFormat(prod_markup[i].value.replace(/[^0-9.]+/g, ''));
             prod_price[i].innerHTML = moneyFormat(+prod_purchase_price[i].value.replace(/ /g,'') + +prod_markup[i].value.replace(/ /g,''));
-        }
+        };
 
         prod_quantity[i].onkeypress = function (e) {
             e = e || event;
@@ -220,19 +212,19 @@ document.addEventListener('DOMContentLoaded', function(){
             if (chr < '0' || chr > '9') {
                 return false;
             }
-        }
+        };
 
         prod_purchase_price[i].onchange = function () {
             let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
             edit(product_id);
             saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
-        }
+        };
 
         prod_markup[i].onchange = function () {
             let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
             edit(product_id);
             saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
-        }
+        };
 
         prod_quantity.onchange = function () {
             let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
