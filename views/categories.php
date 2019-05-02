@@ -48,12 +48,14 @@
 </div>
 <div class="modal-form-category">
     <div class="modal-form-content">
-        <fieldset>
-            <legend class="modal-title"></legend>
-            <input type="hidden" name="id" value="<?php echo $category->id; ?>">
-            <label for="title">Наименование <span>*</span></label><input type="text" name="title" id="title" value="<?php echo $category->title; ?>"><br>
-            <label for="description">Описание</label><input type="text" name="description" id="description" value="<?php echo $category->description; ?>"><br>
-        </fieldset>
+        <form id="category_form">
+            <fieldset>
+                <legend class="modal-title"></legend>
+                <input type="hidden" name="id" value="<?php echo $category->id; ?>">
+                <label for="title">Наименование <span>*</span></label><input type="text" name="title" id="title" value="<?php echo $category->title; ?>"><br>
+                <label for="description">Описание</label><input type="text" name="description" id="description" value="<?php echo $category->description; ?>"><br>
+            </fieldset>
+        </form>
         <a href="#" id="save">Сохранить</a>
     </div>
     <div class="btn-close">x</div>
