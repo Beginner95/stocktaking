@@ -51,22 +51,24 @@
 </div>
 <div class="modal-form-user">
     <div class="modal-form-content">
-        <fieldset>
-            <legend class="modal-title"></legend>
-            <input type="hidden" name="id" value="<?php echo $user->id; ?>">
-            <label for="login">Логин <span>*</span></label>
-            <input type="text" name="login" id="login" value="<?php echo $user->login; ?>"><br>
-            <label for="password">Пароль <span>*</span></label>
-            <input type="text" name="password" id="password" value="<?php echo $user->password; ?>"><br>
-            <label for="first_name">Фамилия <span>*</span></label>
-            <input type="text" name="first-name" id="first_name" value="<?php echo $user->first_name; ?>"><br>
-            <label for="last_name">Имя <span>*</span></label>
-            <input type="text" name="last-name" id="last_name" value="<?php echo $user->last_name; ?>"><br>
-            <label for="second_name">Очество</label>
-            <input type="text" name="second-name" id="second_name" value="<?php echo $user->second_name; ?>"><br>
-            <label for="second_name">Роль</label>
-            <select name="role"></select>
-        </fieldset>
+        <form id="user_form">
+            <fieldset>
+                <legend class="modal-title"></legend>
+                <input type="hidden" name="id" value="<?php echo $user->id; ?>">
+                <label for="login">Логин <span>*</span></label>
+                <input type="text" name="login" id="login" value="<?php echo $user->login; ?>"><br>
+                <label for="password">Пароль <span>*</span></label>
+                <input type="text" name="password" id="password" value="<?php echo $user->password; ?>"><br>
+                <label for="first_name">Фамилия <span>*</span></label>
+                <input type="text" name="first-name" id="first_name" value="<?php echo $user->first_name; ?>"><br>
+                <label for="last_name">Имя <span>*</span></label>
+                <input type="text" name="last-name" id="last_name" value="<?php echo $user->last_name; ?>">
+                <label for="second_name">Очество</label>
+                <input type="text" name="second-name" id="second_name" value="<?php echo $user->second_name; ?>">
+                <label for="second_name">Роль <span>*</span></label>
+                <select name="role"></select>
+            </fieldset>
+        </form>
         <a href="#" id="save">Сохранить</a>
     </div>
     <div class="btn-close">x</div>
