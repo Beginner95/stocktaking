@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 
 use App\Controller;
@@ -16,7 +16,7 @@ class Manufacturer
     {
         $manufacturers = \App\Model\Manufacturer::findAll();
         $this->view->manufacturers = $manufacturers;
-        $this->view->display(__DIR__ . '/../../../views/manufacturers.php');
+        $this->view->display(__DIR__ . '/../../../../views/admin/manufacturers.php');
     }
 
     /**
@@ -57,7 +57,7 @@ class Manufacturer
         if ($_GET['ajax'] === 'true') {
             echo json_encode($this->view->manufacturer);
         } else {
-            $this->view->display(__DIR__ . '/../../../views/manufacturers.php');
+            $this->view->display(__DIR__ . '/../../../../views/admin/manufacturers.php');
         }
     }
 

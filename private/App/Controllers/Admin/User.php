@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controller;
 
@@ -14,7 +14,7 @@ class User
 	{
 		$users = \App\Model\User::findAll();
 		$this->view->users = $users;
-		$this->view->display(__DIR__ . '/../../../views/users.php');
+		$this->view->display(__DIR__ . '/../../../../views/admin/users.php');
 	}
 
 	/**
@@ -58,7 +58,7 @@ class User
 		if($_GET['ajax'] === 'true') {
 			echo json_encode($this->view->user);
 		} else {
-			$this->view->display(__DIR__ . '/../../../views/users');
+			$this->view->display(__DIR__ . '/../../../../views/admin/users.php');
 		}
 	}
 

@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/header.php'; ?>
+<?php include __DIR__ . '/../header.php'; ?>
 
 <div class="container">
     <?php include __DIR__ . '/menu.php'; ?>
@@ -69,5 +69,5 @@
 </div>
 
 
-<?php include __DIR__ . '/footer.php'; ?>
+<?php include __DIR__ . '/../footer.php'; ?>
 <script src="/public/js/category.js"></script>

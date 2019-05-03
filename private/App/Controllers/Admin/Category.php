@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controller;
 
@@ -14,7 +14,7 @@ class Category
     {
         $categories = \App\Model\Category::findAll();
         $this->view->categories = $categories;
-        $this->view->display(__DIR__ . '/../../../views/categories.php');
+        $this->view->display(__DIR__ . '/../../../../views/admin/categories.php');
     }
 
     /**
@@ -54,7 +54,7 @@ class Category
         if ($_GET['ajax'] === 'true') {
             echo json_encode($this->view->category);
         } else {
-            $this->view->display(__DIR__ . '/../../../views/categories.php');
+            $this->view->display(__DIR__ . '/../../../../views/admin/categories.php');
         }
     }
 

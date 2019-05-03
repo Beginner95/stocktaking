@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Controller;
 use App\Model\Product;
@@ -15,7 +15,7 @@ class Index
     {
         $products = Product::findAll();
         $this->view->products = $products;
-        $this->view->display(__DIR__ . '/../../../views/products.php');
+        $this->view->display(__DIR__ . '/../../../../views/admin/products.php');
     }
 
     /**
@@ -84,7 +84,7 @@ class Index
         if ($_GET['ajax'] === 'true') {
             echo json_encode($this->view->product);
         } else {
-            $this->view->display(__DIR__ . '/../../../views/products.php');
+            $this->view->display(__DIR__ . '/../../../../views/admin/products.php');
         }
     }
 }
