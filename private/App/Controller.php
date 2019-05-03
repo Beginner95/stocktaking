@@ -23,6 +23,9 @@ abstract class Controller
 
     private function access()
     {
-        return true;
+        if ($_SESSION['user']['role'] === 'Administrator') {
+            return true;
+        }
+        return false;
     }
 }
