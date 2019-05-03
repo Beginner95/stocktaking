@@ -134,6 +134,12 @@ header nav > ul::after{
     background: #3a3a3a;
     transition: 0.5s;
 }
+
+.top-menu li:last-child{
+    float: right;
+    font-size: 14px;
+    color: #b4b4b4;
+}
 /* End style menu */
 
 main section header{
