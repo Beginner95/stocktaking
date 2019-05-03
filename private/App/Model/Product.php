@@ -3,6 +3,7 @@
 namespace App\Model;
 
 
+use App\Db;
 use App\Model;
 
 class Product
@@ -41,5 +42,17 @@ class Product
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param $query
+     * @return array
+     * @throws \App\DbException
+     */
+    public static function search($query)
+    {
+        $db = new Db();
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE name LIKE ? OR code LIKE ?';
+        return $db->query($sql, ["%$query%", "%$query%"]);
     }
 }
