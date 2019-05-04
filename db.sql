@@ -56,3 +56,15 @@ CREATE TABLE `stocktaking`.`orders` (
   `user_id` INT NOT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
+--Order Products--
+CREATE TABLE `stocktaking`.`order_products` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `code` VARCHAR(100) NOT NULL ,
+  `name` VARCHAR(255) NOT NULL ,
+  `price` DECIMAL(15,4) NOT NULL ,
+  `quantity` INT NOT NULL ,
+  `total_sum` DECIMAL(15,4) NOT NULL ,
+  `order_id` INT NOT NULL ,
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
