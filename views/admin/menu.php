@@ -11,6 +11,11 @@
                 </ul>
             </li>
             <li><a href="/admin/sales">Продажи</a></li>
+            <li>
+                <?php echo $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['second_name']; ?>
+                <a href="/auth/logout">Выход</a>
+            </li>
         </ul>
+
     </nav>
 </header>
