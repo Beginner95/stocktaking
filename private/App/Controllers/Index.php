@@ -25,4 +25,14 @@ class Index
         }
     }
 
+    /**
+     * @throws \App\DbException
+     */
+    public function actionProduct()
+    {
+        if(isset($_GET['id']) && !empty($_GET['id'])) {
+            echo json_encode(Product::findById($_GET['id']));
+        }
+    }
+
 }
