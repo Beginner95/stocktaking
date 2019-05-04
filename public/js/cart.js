@@ -33,12 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (add[i].childNodes[3].innerHTML === '0') {
                             showPrompt('Нет товара', '', '');
                         } else {
-
-                            //add[i].classList.remove('add');
-                            let td = cE('td');
+                            let td_delete = cE('td');
+                            let td_sum = cE('td');
                             add[i].childNodes[3].innerHTML = '<input type="text" name="quantity" value="1" autocomplete="off">';
-                            add[i].insertBefore(td, add[i].children[4]);
-                            add[i].childNodes[4].innerHTML = '<td><a href="#" class="delete"><img src="/public/images/icon_delete.svg" title="Удалить"></a></td>';
+                            add[i].insertBefore(td_sum, null);
+                            add[i].childNodes[4].innerHTML = '<spun class="total-sum">' + add[i].childNodes[2].innerHTML + '</spun>';
+                            add[i].insertBefore(td_delete, null);
+                            add[i].childNodes[5].innerHTML = '<a href="#" class="delete"><img src="/public/images/icon_delete.svg" title="Удалить"></a>';
                             item.appendChild(add[i]);
                         }
                     };
@@ -56,6 +57,13 @@ document.addEventListener('DOMContentLoaded', function () {
         let target = event.target;
         if (target.tagName === 'IMG') {
             target.parentNode.parentNode.parentNode.remove();
+        }
+
+        if (target.tagName === 'INPUT') {
+            let sum = +target.parentNode.parentNode.childNodes[2].innerHTML.replace(/ /g, '');
+            target.oninput = function () {
+                target.parentNode.parentNode.childNodes[4].innerHTML = moneyFormat(sum * target.value);
+            };
         }
     };
 
