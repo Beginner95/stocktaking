@@ -207,6 +207,7 @@ main .items .item td input[type="text"]{
     text-align: center;
     padding: 3px 0;
     width: 90px;
+    outline: none;
 }
 
 main .items .item tr:nth-child(even){
@@ -444,4 +445,75 @@ main .block-btn a:hover{
     background: #3a3a3a;
     color: #d4d4d4;
     transition: 0.5s;
+}
+
+.container{
+    min-width: 800px;
+}
+
+.container main .search-block{
+    font-size: 0;
+    margin-top: 2px;
+    padding: 5px 0;
+    text-align: center;
+
+}
+
+.container main .search-block button{
+    border: none;
+    padding: 5px 10px;
+    position: relative;
+    z-index: 9999;
+}
+
+.container main .search-block #search{
+    border: none;
+    padding: 5px;
+    width: 700px;
+    outline: none;
+    z-index: 9999;
+    position: relative;
+
+}
+
+#list{
+    background: #ffffff;
+    font-size: 0;
+    line-height: 1.2;
+    visibility: hidden;
+    padding: 5px;
+    width: 726px;
+    margin-top: -4px;
+    z-index: 9999;
+    cursor: pointer !important;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.table-cart{
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+.table-cart th{
+    font-weight: 700;
+    border: 1px solid #444444;
+    padding: 5px;
+}
+
+.table-cart td{
+    border: 1px solid #444444;
+    padding: 5px;
+}
+
+.table-cart td:nth-child(2){
+    text-align: left;
+}
+
+.table-cart tr:nth-child(odd){
+    background: #cccccc;
 }
