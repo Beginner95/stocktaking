@@ -51,12 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     };
                 }
-
             } else {
                 list.innerHTML = '';
                 list.style.visibility = "hidden";
             }
-
         })
     };
 
@@ -99,4 +97,27 @@ document.addEventListener('DOMContentLoaded', function () {
         getQS('.quantity').innerHTML = quantity;
         getQS('.total-sum').innerHTML = moneyFormat(total_sum);
     }
+
+    let checkout = getId('checkout');
+    checkout.onclick = function () {
+        let products = item.getElementsByTagName('tr');
+        let cart = {};
+        for (let i = 0; i < products.length; i++) {
+            cart[i] = {
+                "id": products[i].getAttribute('id'),
+                "code": products[i].childNodes[0].innerHTML,
+                "name": products[i].childNodes[1].innerHTML,
+                "price": products[i].childNodes[2].innerHTML.replace(/ /g, ''),
+                "quantity": products[i].childNodes[3].childNodes[0].value
+            };
+        }
+        let params = 'products=' + JSON.stringify(cart) + '&quantity=' + getQS('.quantity').innerHTML + '&total-sum=' + getQS('.total-sum').innerHTML.replace(/ /g, '');
+        ajax('POST', '/index/checkout', params, function (data) {
+            if (data === '0') {
+                showPrompt('Нет выбранных товаров для оформления заказа!', '', '');
+            } else if (data === '1') {
+                showPrompt('Заказ успешно оформлен!', '', '');
+            }
+        });
+    };
 });
