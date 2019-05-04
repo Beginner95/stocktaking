@@ -69,9 +69,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (target.tagName === 'INPUT') {
             let sum = +target.parentNode.parentNode.childNodes[2].innerHTML.replace(/ /g, '');
+            let id = target.parentNode.parentNode.getAttribute('id');
             target.oninput = function () {
-                target.parentNode.parentNode.childNodes[4].innerHTML = moneyFormat(sum * target.value);
-                calc();
+                ajax('GET', '/index/product/?id=' + id, '', function (data) {
+                    data = JSON.parse(data);
+                    if (target.value > data.quantity) {
+                        showPrompt('Нет такого количества, осталось только ' + data.quantity + ' шт.', '', '');
+                        target.value = data.quantity;
+                    } else {
+                        target.parentNode.parentNode.childNodes[4].innerHTML = moneyFormat(sum * target.value);
+                        calc();
+                    }
+                });
             };
         }
     };
