@@ -11,9 +11,9 @@ abstract class Controller
         $this->view = new View();
     }
 
-    public function action($action)
+    public function action($action, $role)
     {
-        if (false === $this->access()) {
+        if (false === $this->access($role)) {
             return false;
         } else {
             $actMethodName = 'action' . $action;
@@ -21,11 +21,13 @@ abstract class Controller
         }
     }
 
-    private function access()
+    private function access($role)
     {
-        if ($_SESSION['user']['role'] === 'Administrator') {
-            return true;
-        }
+        if (empty($_SESSION['user'])) return true;
+        if ('admin' === $role && $_SESSION['user']['role'] === 'Administrator') return true;
+        if ('manager' === $role && $_SESSION['user']['role'] === 'Administrator') return true;
+        if ('manager' === $role && $_SESSION['user']['role'] === 'Manager') return true;
+
         return false;
     }
 }
