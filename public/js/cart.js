@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
         showCover();
     };
 
+    search.onblur = function () {
+        if (search.value === '') {
+            hideCover();
+        }
+    };
+
     search.oninput = function () {
         let params = 'q=' + this.value;
         ajax('POST', '/index/search', params, function (data) {
