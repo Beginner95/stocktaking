@@ -46,3 +46,13 @@ CREATE TABLE `stocktaking`.`products` (
   PRIMARY KEY (`id`),
   UNIQUE (`name`)
 ) ENGINE = InnoDB;
+
+--Orders--
+CREATE TABLE `stocktaking`.`orders` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `quantity` INT NOT NULL ,
+  `total_sum` DECIMAL(15,4) NOT NULL DEFAULT '0.0000' ,
+  `date_added` DATETIME NOT NULL ,
+  `user_id` INT NOT NULL ,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
