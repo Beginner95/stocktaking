@@ -52,4 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     };
 
+    item.onclick = function (event) {
+        let target = event.target;
+        if (target.tagName === 'IMG') {
+            target.parentNode.parentNode.parentNode.remove();
+        }
+    };
+
 });
