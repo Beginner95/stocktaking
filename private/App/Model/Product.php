@@ -52,7 +52,7 @@ class Product
     public static function search($query)
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE name LIKE ? OR code LIKE ?';
+        $sql = 'SELECT `id`, `code`, `name`, `price`, `quantity`  FROM ' . static::$table . ' WHERE name LIKE ? OR code LIKE ?';
         return $db->query($sql, ["%$query%", "%$query%"]);
     }
 }
