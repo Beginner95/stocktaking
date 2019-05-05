@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn_delete[i].onclick = function() {
             let user = btn_delete[i].parentNode.parentNode;
             let params = '?id='+user.getAttribute('id');
-            ajax('GET', '/user/delete/'+params, '', function (data) {
+            ajax('GET', '/admin/user/delete/'+params, '', function (data) {
                 if (data === '') {
                     user.remove();
                     showPrompt('Пользователь ' + user.childNodes[3].innerText + ' был успешно удален!', '', '');
@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             if (id !== '') {
                 let params = 'id=' + id + '&login=' + login + '&password=' + password + '&first-name=' + first_name + '&last-name=' + last_name + '&second-name=' + second_name + '&role=' + role;
-                ajax('POST', '/user/save/?id='+id, params, function (data) {
+                ajax('POST', '/admin/user/save/?id='+id, params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Пользователь ' + login + ' успешно обнавлен!', true, '/user');
+                        showPrompt('Пользователь ' + login + ' успешно обнавлен!', true, '/admin/user');
                         getId('user_form').reset();
                     } else {
                         hideCover();
@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             } else {
                 let params = 'login=' + login + '&password=' + password + '&first-name=' + first_name + '&last-name=' + last_name + '&second-name=' + second_name + '&role=' + role;
-                ajax('POST', '/user/save', params, function (data) {
+                ajax('POST', '/admin/user/save', params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Пользователь ' + login + ' успешно добавлен!', true, '/user');
+                        showPrompt('Пользователь ' + login + ' успешно добавлен!', true, '/admin/user');
                         getId('user_form').reset();
                     } else {
                         hideCover();
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             getQS('.modal-title').innerHTML = 'Редактирование пользователя';
             let user = btn_edit[i].parentNode.parentNode;
             let params = '?id=' + user.getAttribute('id') +'&ajax=true';
-            ajax('GET', '/user/edit/' + params, '', function (data) {
+            ajax('GET', '/admin/user/edit/' + params, '', function (data) {
                 let inputs = modal_form_user.getElementsByTagName('input');
                 let user = JSON.parse(data);
                 select_role.innerHTML = '';

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btn_delete[i].onclick = function() {
             let category = btn_delete[i].parentNode.parentNode;
             let params = '?id='+category.getAttribute('id');
-            ajax('GET', '/category/delete/'+params, '', function (data) {
+            ajax('GET', '/admin/category/delete/'+params, '', function (data) {
                 if (data === '') {
                     category.remove();
                     showPrompt('Категория ' + category.childNodes[3].innerText + ' была успешно удалена!', '', '');
@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             if (id !== '') {
                 let params = 'id=' + id + '&title=' + title + '&description=' + description;
-                ajax('POST', '/category/save/?id='+id, params, function (data) {
+                ajax('POST', '/admin/category/save/?id='+id, params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Категория ' + title + ' успешно обнавлена!', true, '/category');
+                        showPrompt('Категория ' + title + ' успешно обнавлена!', true, '/admin/category');
                         getId('category_form').reset();
                     } else {
                         hideCover();
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             } else {
                 let params = 'title=' + title + '&description=' + description;
-                ajax('POST', '/category/save', params, function (data) {
+                ajax('POST', '/admin/category/save', params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Категория ' + title + ' успешно добавлена!', true, '/category');
+                        showPrompt('Категория ' + title + ' успешно добавлена!', true, '/admin/category');
                         getId('category_form').reset();
                     } else {
                         hideCover();
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             getQS('.modal-title').innerHTML = 'Редактирование категории';
             let category = btn_edit[i].parentNode.parentNode;
             let params = '?id=' + category.getAttribute('id') +'&ajax=true';
-            ajax('GET', '/category/edit/' + params, '', function (data) {
+            ajax('GET', '/admin/category/edit/' + params, '', function (data) {
                 let inputs = modal_form_category.getElementsByTagName('input');
                 let category = JSON.parse(data);
                 for(let i = 0; i < inputs.length; i++) {

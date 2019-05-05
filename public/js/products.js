@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     add_product.onclick = function () {
         getQS('.modal-title').innerHTML = 'Добавление товара';
-        ajax('GET', '/index/edit/?id=&ajax=true', '', function (data) {
+        ajax('GET', '/admin/index/edit/?id=&ajax=true', '', function (data) {
             let product = JSON.parse(data);
             let select_category = getQS('.select-category');
             let select_manufacturer = getQS('.select-manufacturer');
@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function(){
         } else {
             if (id !== '') {
                 let params = 'id=' + id + '&code=' + code + '&name=' + name + '&category-id=' + category_id + '&manufacturer-id=' + manufacturer_id + '&purchase-price=' + purchase_price + '&markup=' + markup + '&price=' + price + '&quantity=' + quantity;
-                ajax('POST', '/index/save/?id='+id, params, function (data) {
+                ajax('POST', '/admin/index/save/?id='+id, params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Товар ' + name + ' успешно обнавлен!', true, '/index');
+                        showPrompt('Товар ' + name + ' успешно обнавлен!', true, '/admin/index');
                         getId('product_form').reset();
                     } else {
                         hideCover();
@@ -92,10 +92,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 });
             } else {
                 let params = 'code=' + code + '&name=' + name + '&category-id=' + category_id + '&manufacturer-id=' + manufacturer_id + '&purchase-price=' + purchase_price + '&markup=' + markup + '&price=' + price + '&quantity=' + quantity;
-                ajax('POST', '/index/save', params, function (data) {
+                ajax('POST', '/admin/index/save', params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Товар ' + name + ' успешно добавлен!', true, '/index');
+                        showPrompt('Товар ' + name + ' успешно добавлен!', true, '/admin/index');
                         getId('product_form').reset();
                     } else {
                         hideCover();
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function(){
         btn_delete[i].onclick = function() {
             let product = btn_delete[i].parentNode.parentNode;
             let params = '?id='+product.getAttribute('id');
-            ajax('GET', '/index/delete/'+params, '', function (data) {
+            ajax('GET', '/admin/index/delete/'+params, '', function (data) {
                 if (data === '') {
                     product.remove();
                     showPrompt('Товар ' + product.childNodes[5].innerText + ' был успешно удален!', '', '');
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function(){
             getQS('.modal-title').innerHTML = 'Редактирование товара';
             let product = btn_edit[i].parentNode.parentNode;
             let params = '?id=' + product.getAttribute('id') +'&ajax=true';
-            ajax('GET', '/index/edit/' + params, '', function (data) {
+            ajax('GET', '/admin/index/edit/' + params, '', function (data) {
                 let inputs = modal_form_product.getElementsByTagName('input');
                 let product = JSON.parse(data);
                 let select_category = getQS('.select-category');
@@ -236,12 +236,12 @@ document.addEventListener('DOMContentLoaded', function(){
     
 
     function edit(id) {
-        ajax('GET', 'index/edit/?id='+id+'&ajax=true', '', function (data) {});
+        ajax('GET', '/admin/index/edit/?id='+id+'&ajax=true', '', function (data) {});
     }
 
     function saveAjax(id, purchase_price, markup, price, quantity) {
         let params = 'id=' + id + '&ajax=true&purchase-price=' + purchase_price.replace(/ /g, '') + '&markup=' + markup.replace(/ /g, '') + '&price=' + price.replace(/ /g, '') + '&quantity=' + quantity;
-        ajax('POST', '/index/save/?id='+id, params, function (data) {});
+        ajax('POST', '/admin/index/save/?id='+id, params, function (data) {});
     }
 
 });

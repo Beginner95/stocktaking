@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btn_delete[i].onclick = function() {
             let manufacturer = btn_delete[i].parentNode.parentNode;
             let params = '?id='+manufacturer.getAttribute('id');
-            ajax('GET', '/manufacturer/delete/'+params, '', function (data) {
+            ajax('GET', '/admin/manufacturer/delete/'+params, '', function (data) {
                 if (data === '') {
                     manufacturer.remove();
                     showPrompt('Категория ' + manufacturer.childNodes[3].innerText + ' была успешно удалена!', '', '');
@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             if (id !== '') {
                 let params = 'id=' + id + '&title=' + title + '&description=' + description;
-                ajax('POST', '/manufacturer/save/?id='+id, params, function (data) {
+                ajax('POST', '/admin/manufacturer/save/?id='+id, params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Производитель ' + title + ' успешно обнавлена!', true, '/manufacturer');
+                        showPrompt('Производитель ' + title + ' успешно обнавлена!', true, '/admin/manufacturer');
                         getId('manufacturer_form').reset();
                     } else {
                         hideCover();
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             } else {
                 let params = 'title=' + title + '&description=' + description;
-                ajax('POST', '/manufacturer/save', params, function (data) {
+                ajax('POST', '/admin/manufacturer/save', params, function (data) {
                     if (data === '') {
                         hideCover();
-                        showPrompt('Производитель ' + title + ' успешно добавлен!', true, '/manufacturer');
+                        showPrompt('Производитель ' + title + ' успешно добавлен!', true, '/admin/manufacturer');
                         getId('manufacturer_form').reset();
                     } else {
                         hideCover();
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             getQS('.modal-title').innerHTML = 'Редактирование производителя';
             let manufacturer = btn_edit[i].parentNode.parentNode;
             let params = '?id=' + manufacturer.getAttribute('id') +'&ajax=true';
-            ajax('GET', '/manufacturer/edit/' + params, '', function (data) {
+            ajax('GET', '/admin/manufacturer/edit/' + params, '', function (data) {
                 let inputs = modal_form_manufacturer.getElementsByTagName('input');
                 let manufacturer = JSON.parse(data);
                 for(let i = 0; i < inputs.length; i++) {
