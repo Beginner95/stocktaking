@@ -15,6 +15,11 @@ class Order
     public $date_added;
     public $user_id;
 
+    /**
+     * @param $var
+     * @return bool|null
+     * @throws \App\DbException
+     */
     public function __get($var)
     {
     	if ('user' === $var) {
