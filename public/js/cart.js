@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     search.onfocus = function () {
-        showCover();
+        if (search.value === '') {
+            showCover();
+        }
     };
 
     search.onblur = function () {
