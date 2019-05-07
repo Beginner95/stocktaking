@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function(){
             saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
         };
 
-        prod_quantity.onchange = function () {
+        prod_quantity[i].onchange = function () {
             let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
             edit(product_id);
             saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
