@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             target.oninput = function () {
                 ajax('GET', '/index/product/?id=' + id, '', function (data) {
                     data = JSON.parse(data);
-                    if (target.value > data.quantity) {
+                    if (parseInt(target.value) > parseInt(data.quantity)) {
                         showPrompt('Нет такого количества, осталось только ' + data.quantity + ' шт.', '', '');
                         target.value = data.quantity;
                     } else {
