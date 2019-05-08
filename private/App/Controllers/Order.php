@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Controller;
+use App\Model\OrderProducts;
+use App\Model\Product;
+
 class Order
 	extends Controller
 {
@@ -37,10 +40,25 @@ class Order
         $order = $this->getOrder();
         if (null !== $order->id) {
             $order->delete();
-            \App\Model\OrderProducts::deleteOrderProducts($order->id);
+            OrderProducts::deleteOrderProducts($order->id);
         }
 
     }
 
-
+    /**
+     * @throws \App\DbException
+     */
+    public function actionReturn()
+    {
+        $order = $this->getOrder();
+        if (null !== $order->id) {
+            $products = OrderProducts::getOrderProducts($order->id);
+            foreach ($products as $product) {
+                $prod = Product::findById($product->product_id);
+                $prod->quantity = $prod->quantity + $product->quantity;
+                $prod->save();
+            }
+            $this->actionDelete();
+        }
+    }
 }
