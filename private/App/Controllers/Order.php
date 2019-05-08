@@ -16,18 +16,30 @@ class Order
 	}
 
     /**
+     * @return \App\Model\Order|bool
+     * @throws \App\DbException
+     */
+	public function getOrder()
+    {
+        if (!empty($_GET['id'])) {
+            $order = \App\Model\Order::findById($_GET['id']);
+        } else {
+            $order = new \App\Model\Order();
+        }
+        return $order;
+    }
+
+    /**
      * @throws \App\DbException
      */
 	public function actionDelete()
     {
-        if (!empty($_GET['id'])) {
-            $order = \App\Model\Order::findById($_GET['id']);
-
-            if (null !== $order->id) {
-                $order->delete();
-                \App\Model\OrderProducts::deleteOrderProducts($order->id);
-            }
+        $order = $this->getOrder();
+        if (null !== $order->id) {
+            $order->delete();
+            \App\Model\OrderProducts::deleteOrderProducts($order->id);
         }
+
     }
 
 
