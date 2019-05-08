@@ -197,7 +197,7 @@ main .items .item td a img{
     width: 20px;
 }
 
-main .items .item td a:first-child img{
+main .items .item td a img{
     margin-right: 10px;
 }
 
