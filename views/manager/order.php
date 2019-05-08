@@ -33,6 +33,7 @@
                             <td><?php echo $order->date_added; ?></td>
                             <td>
                                 <a href="#" class="edit"><img src="/public/images/icon_eye.svg" title="Показать"></a>
+                                <a href="#" class="return"><img src="/public/images/icon_back.svg" title="Вернуть заказ на склад"></a>
                                 <a href="#" class="delete"><img src="/public/images/icon_delete.svg" title="Удалить"></a>
                             </td>
                         </tr>
