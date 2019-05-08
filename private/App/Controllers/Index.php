@@ -61,6 +61,7 @@ class Index
                 $order_product->quantity = $product['quantity'];
                 $order_product->total_sum = $product['price'] * $product['quantity'];
                 $order_product->order_id = $order->id;
+                $order_product->product_id = $product['id'];
                 $order_product->save();
                 $prod->quantity = $prod->quantity - $product['quantity'];
                 $prod->save();
