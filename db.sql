@@ -65,6 +65,7 @@ CREATE TABLE `stocktaking`.`order_products` (
   `price` DECIMAL(15,4) NOT NULL ,
   `quantity` INT NOT NULL ,
   `total_sum` DECIMAL(15,4) NOT NULL ,
+  `product_id` INT NOT NULL ,
   `order_id` INT NOT NULL ,
 PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
