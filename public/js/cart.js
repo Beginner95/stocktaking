@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 showPrompt('Нет выбранных товаров для оформления заказа!', '', '');
             } else if (data === '1') {
                 showPrompt('Заказ успешно оформлен!', '', '');
+                item.innerHTML = '';
             }
         });
     };
