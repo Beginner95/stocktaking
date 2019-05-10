@@ -32,7 +32,7 @@
                             <td><?php echo number_format($order->total_sum, 2, '.', ' '); ?></td>
                             <td><?php echo $order->date_added; ?></td>
                             <td>
-                                <a href="#" class="edit"><img src="/public/images/icon_eye.svg" title="Показать"></a>
+                                <a href="#" class="show"><img src="/public/images/icon_eye.svg" title="Показать"></a>
                                 <a href="#" class="return"><img src="/public/images/icon_back.svg" title="Вернуть заказ на склад"></a>
                                 <a href="#" class="delete"><img src="/public/images/icon_delete.svg" title="Удалить"></a>
                             </td>
@@ -51,6 +51,30 @@
         </section>
     </main>
 </div>
+
+<div class="modal-form-order-products">
+    <div class="modal-form-content">
+        <fieldset>
+            <legend class="modal-title">Заказ №</legend>
+            <table class="table-cart">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Артикул</th>
+                        <th>Наименование</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </fieldset>
+    </div>
+    <div class="btn-close">x</div>
+</div>
+
 <div id="prompt-form-container">
     <div id="prompt-form">
         <div id="prompt-message"></div>
