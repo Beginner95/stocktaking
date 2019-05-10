@@ -61,4 +61,15 @@ class Order
             $this->actionDelete();
         }
     }
+
+    /**
+     * @throws \App\DbException
+     */
+    public function actionProducts()
+    {
+        if (!empty($_GET['order_id'])) {
+            $products = OrderProducts::getOrderProducts($_GET['order_id']);
+            echo json_encode($products);
+        }
+    }
 }
