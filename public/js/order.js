@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
 	let btn_delete = getQSA('.delete');
 	let btn_return = getQSA('.return');
+	let btn_show = getQSA('.show');
+	let modal_form_order_products = getQS('.modal-form-order-products');
+	let table_products = getQS('.table-cart');
+    let close_modal_form = getQS('.btn-close');
+
+    close_modal_form.onclick = function() {
+        modal_form_order_products.style.display = 'none';
+        hideCover();
+    };
 
 	for (let i = 0; i < btn_delete.length; i++) {
         let order = btn_delete[i].parentNode.parentNode;
@@ -22,5 +31,22 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
             })
         };
+
+		btn_show[i].onclick = function () {
+		    showCover();
+            modal_form_order_products.style.display = 'block';
+            getQS('.modal-title').innerHTML = 'Заказ №' + order_id;
+			ajax('GET', '/order/products/?order_id=' + order_id, '', function (data) {
+				data = JSON.parse(data);
+                let arr = [];
+                let num = 1;
+                for (let i = 0; i < data.length; i++) {
+                    arr[i] = '<tr id="' + data[i].id + '"><td>' + num++ + '</td><td>' + data[i].code + '</td><td>' + data[i].name + '</td><td>' + moneyFormat(data[i].price) + '</td><td>' + data[i].quantity + '</td><td>' + moneyFormat(data[i].price * data[i].quantity) + '</td></tr>';
+
+                }
+                table_products.childNodes[3].innerHTML = arr.join('');
+                table_products.childNodes[5].innerHTML = '<tr><td colspan="5">Итого:</td><td>' + order.childNodes[9].innerHTML + '</td></tr>';
+            })
+        }
 	}
 });
