@@ -257,7 +257,11 @@ main .block-btn a:hover{
     transition: 0.5s;
 }
 
-.modal-form-product, .modal-form-category, .modal-form-user, .modal-form-auth{
+.modal-form-product,
+.modal-form-category,
+.modal-form-user,
+.modal-form-auth,
+.modal-form-order-products{
     display: none;
     width: 500px;
     height: 405px;
@@ -282,6 +286,29 @@ main .block-btn a:hover{
 
 .modal-form-user{
     height: 335px;
+}
+
+.modal-form-order-products{
+    width: 90%;
+    height: 500px;
+    padding: 25px 0 20px 20px;
+}
+
+.modal-form-order-products .modal-form-content{
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.modal-form-order-products table {
+    background: #eaeaea;
+}
+
+.modal-form-order-products table thead tr{
+    background: #9e9e9e !important;
+}
+
+.modal-form-order-products table tfoot tr td{
+    text-align: center !important;
 }
 
 .btn-close{
@@ -311,9 +338,15 @@ main .block-btn a:hover{
     border: 1px solid #d4d4d4;
 }
 
+.modal-form-order-products .modal-form-content fieldset{
+    padding: 20px;
+    border: 1px solid #d4d4d4;
+}
+
 .modal-form-product .modal-form-content legend,
 .modal-form-auth .modal-form-content legend,
 .modal-form-user .modal-form-content legend,
+.modal-form-order-products .modal-form-content legend,
 .modal-form-category .modal-form-content legend
 {
     color: #d4d4d4;
