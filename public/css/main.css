@@ -550,3 +550,44 @@ main .block-btn a:hover{
 .table-cart tr:nth-child(odd){
     background: #cccccc;
 }
+
+/* Print */
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #print, #print * {
+        visibility: visible;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    #print {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 50px;
+    }
+}
+
+#print thead th {
+    font-weight: 700;
+    border: 1px solid #444444;
+    padding: 5px;
+}
+
+#print h2{
+    font-size: 18px;
+}
+
+#print tbody td{
+    border: 1px solid #444444;
+    padding: 5px;
+}
+
+#print tfoot td{
+    font-weight: 700;
+    text-align: left;
+    padding-top: 15px;
+}
