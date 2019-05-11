@@ -55,4 +55,19 @@ class Product
         $sql = 'SELECT `id`, `code`, `name`, `price`, `quantity`  FROM ' . static::$table . ' WHERE name LIKE ? OR code LIKE ?';
         return $db->query($sql, ["%$query%", "%$query%"]);
     }
+
+    public static function exists($query, $column)
+    {
+        $db = new Db();
+
+        if ($column == 'code') {
+            $where = ' WHERE code=:code';
+        } else {
+            $whree = ' WHERE name=:name';
+        }
+
+        $sql = 'SELECT `code`, `name` FROM ' . static::$table . ' WHERE ' . $column . '=:' . $column;
+        return $db->query($sql, [':'.$column => $query]);
+
+    }
 }
