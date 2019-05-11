@@ -134,3 +134,8 @@ function getChar(event) {
 function moneyFormat(n) {
     return parseFloat(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1 ");
 }
+
+function PrintElem(elem) {
+    window.print();
+    elem.remove();
+}
