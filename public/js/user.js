@@ -15,6 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
             select_role.appendChild(el);
         }
 
+        let user = getId('login');
+        user.onblur = function () {
+            ajax('POST', '/admin/user/exists', 'login=' + user.value, function (data) {
+                if (data !== '0') {
+                    data = JSON.parse(data);
+                    showPrompt('Данный ' + user.value  + ' логин занят!', '', '');
+                    user.value = '';
+                }
+            });
+        };
+
         modal_form_user.style.display = 'block';
         showCover();
         return false;
