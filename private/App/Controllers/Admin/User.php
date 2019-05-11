@@ -73,4 +73,16 @@ class User
 			$user->delete();
 		}
 	}
+
+	public function actionExists()
+	{
+		if (!empty($_POST['login'])) {
+			$user = \App\Model\User::login($_POST['login']);
+			if (!empty($user)) {
+				echo json_encode($user);
+			} else {
+				echo 0;
+			}
+		}
+	}
 }
