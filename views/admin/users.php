@@ -15,6 +15,7 @@
                     <th>№</th>
                     <th>Логин</th>
                     <th>Ф.И.О</th>
+                    <th>Роль</th>
                     <th>Действия</th>
                 </tr>
                 </thead>
@@ -32,7 +33,9 @@
                             <td><?php echo $u->role; ?></td>
                             <td>
                                 <a href="#" class="edit"><img src="/public/images/icon_edit.svg" title="Редактировать"></a>
+                            <?php if ($u->role !== 'Administrator') : ?>
                                 <a href="#" class="delete"><img src="/public/images/icon_delete.svg" title="Удалить"></a>
+                            <?php endif; ?>
                             </td>
                         </tr>
                         <?php $i++; endforeach; ?>
