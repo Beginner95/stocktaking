@@ -87,4 +87,22 @@ class Index
             $this->view->display(__DIR__ . '/../../../../views/admin/products.php');
         }
     }
+
+    public function actionExists()
+    {
+        if (!empty($_POST)) {
+            if (isset($_POST['code'])) {
+                $product = \App\Model\Product::exists($_POST['code'], 'code');
+            }
+            if (isset($_POST['name'])) {
+                $product = \App\Model\Product::exists($_POST['name'], 'name');
+            }
+            
+            if (!empty($product)) {
+                echo json_encode($product);
+            } else {
+                echo 0;
+            }
+        }
+    }
 }
