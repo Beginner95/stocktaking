@@ -9,7 +9,7 @@
             </header>
         </section>
         <div class="search-block">
-            <input type="text" name="search" id="search" autocomplete="off">
+            <input type="text" name="search" id="search" autocomplete="off" placeholder="Поиск товара по артиклу или имени">
             <button id="reset">x</button>
         </div>
         <div id="list"></div>
