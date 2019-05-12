@@ -33,26 +33,25 @@ document.addEventListener('DOMContentLoaded', function(){
 
         let product_code = getId('code');
         product_code.onblur = function () {
-
             ajax('POST', '/admin/index/exists', 'code=' + product_code.value, function (data) {
                 if (data !== '0') {
                     data = JSON.parse(data);
-                    showPrompt('Данный ' + product_code.value + ' код имеется в базе данных, записан для товара ' + data[0].name, '', '');
+                    showPrompt('Код ' + product_code.value + ' имеется в базе данных, записан для товара ' + data[0].name, '', '');
                     product_code.value = '';
                 }
             });
-        }
+        };
 
         let product_name = getId('name');
         product_name.onblur = function () {
             ajax('POST', '/admin/index/exists', 'name=' + product_name.value, function (data) {
                 if (data !== '0') {
                     data = JSON.parse(data);
-                    showPrompt('Данный ' + product_name.value + ' товар имеется в базе данных, с кодом ' + data[0].code, '', '');
+                    showPrompt('Товар ' + product_name.value + ' имеется в базе данных, с кодом ' + data[0].code, '', '');
                     product_name.value = '';
                 }
             });
-        }
+        };
 
         modal_form_product.style.display = 'block';
         showCover();
