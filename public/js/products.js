@@ -241,18 +241,21 @@ document.addEventListener('DOMContentLoaded', function(){
             let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
             edit(product_id);
             saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
+            calc();
         };
 
         prod_markup[i].onchange = function () {
             let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
             edit(product_id);
             saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
+            calc();
         };
 
         prod_quantity[i].onchange = function () {
             let product_id = prod_purchase_price[i].parentNode.parentNode.getAttribute('id');
             edit(product_id);
             saveAjax(product_id, prod_purchase_price[i].value, prod_markup[i].value, prod_price[i].innerText, prod_quantity[i].value);
+            calc();
         }
     }
 
@@ -267,4 +270,15 @@ document.addEventListener('DOMContentLoaded', function(){
         ajax('POST', '/admin/index/save/?id='+id, params, function (data) {});
     }
 
+    function calc(){
+        let sum = 0;
+        let quantity = 0;
+        for(let i = 0; i < prod_price.length; i++) {
+            sum += +prod_price[i].innerHTML.replace(/ /g, '') * +prod_quantity[i].value;
+            quantity += +prod_quantity[i].value;
+        }
+        getQS('.total-sum').innerHTML = moneyFormat(sum);
+        getQS('.quantity').innerHTML = quantity;
+    }
+    calc();
 });
