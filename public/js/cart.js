@@ -123,4 +123,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     };
+
+    let btn_print = getId('print_order');
+    btn_print.onclick = function () {
+        let table = cE('table');
+        table.id = 'print';
+        table.innerHTML += '<thead><tr><th colspan="6"><h2>Список товаров для покупки</h2></th></tr><tr><th>№</th><th>Артикул</th><th>Наименование</th><th>Цена</th><th>Количество</th><th>Сумма</th></tr></thead>';
+        let arr = [];
+        let num = 1;
+        for (let i = 0; i < item.childNodes.length; i++) {
+            arr[i] = '<tr><td>' + num++ + '</td><td>' + item.childNodes[i].childNodes[0].innerHTML + '</td><td>' + item.childNodes[i].childNodes[1].innerHTML + '</td><td>' + moneyFormat(item.childNodes[i].childNodes[2].innerHTML) + '</td><td>' + item.childNodes[i].childNodes[3].childNodes[0].value + '</td><td>' + moneyFormat(item.childNodes[i].childNodes[4].innerHTML) + '</td></tr>';
+        }
+        table.innerHTML += arr.join('');
+        table.innerHTML += '<tfoot><tr><td colspan="5">Количество товаров:</td><td>' + getQS('.quantity').innerHTML + '</td></tr><tr><td colspan="5">На сумму:</td><td>' + getQS('.total-sum').innerHTML + '</td></tr></tfoot>';
+        getQS('body').insertBefore(table, null);
+        PrintElem(table);
+    }
 });
