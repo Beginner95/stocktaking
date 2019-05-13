@@ -10,7 +10,8 @@
                     <li><a href="/admin/manufacturer">Производители</a></li>
                 </ul>
             </li>
-            <li><a href="/admin/sales">Продажи</a></li>
+            <li><a href="/order">Продажи</a></li>
+            <li><a href="/">Добавить заказ</a></li>
             <li>
                 <?php echo $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['second_name']; ?>
                 <a href="/auth/logout">Выход</a>
