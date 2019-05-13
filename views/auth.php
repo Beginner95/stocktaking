@@ -9,7 +9,7 @@
                         <label for="login">Логин <span>*</span></label>
                         <input type="text" name="login" id="login" value=""><br>
                         <label for="password">Пароль <span>*</span></label>
-                        <input type="text" name="password" id="password" value="">
+                        <input type="password" name="password" id="password" value="">
                     </fieldset>
                 </form>
                 <a href="#" id="sign_in">Войти</a>
