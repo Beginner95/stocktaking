@@ -6,7 +6,7 @@
             <?php endif; ?>
             <li><a href="/order">Заказаы</a></li>
             <li>
-                <?php echo $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['second_name']; ?>
+                <?php echo $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name']; ?>
                 <a href="/auth/logout">Выход</a>
             </li>
         </ul>
