@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (data === '1') {
                 showPrompt('Заказ успешно оформлен!', '', '');
                 item.innerHTML = '';
+                calc();
             }
         });
     };
