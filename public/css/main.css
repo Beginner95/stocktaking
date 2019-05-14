@@ -140,6 +140,10 @@ header nav > ul::after{
     font-size: 14px;
     color: #b4b4b4;
 }
+
+.top-menu li ul li:last-child{
+    float: none;
+}
 /* End style menu */
 
 main section header{

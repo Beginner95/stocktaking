@@ -1,8 +1,6 @@
 <header>
     <nav>
         <ul class="top-menu">
-            <li><a href="#">Файл</a></li>
-            <li><a href="#">Вид</a></li>
             <li><a href="#">Склад</a>
                 <ul>
                     <li><a href="/admin/category">Категории</a></li>
@@ -18,6 +16,5 @@
                 <a href="/auth/logout">Выход</a>
             </li>
         </ul>
-
     </nav>
 </header>
