@@ -3,9 +3,13 @@ document.addEventListener('DOMContentLoaded', function(){
     let save = getId('save');
     let modal_form_product = getQS('.modal-form-product');
     let close_modal_form = getQS('.btn-close');
+    let select_category = getQS('.select-category');
+    let select_manufacturer = getQS('.select-manufacturer');
 
     close_modal_form.onclick = function() {
         getId('product_form').reset();
+        select_category.innerHTML = '';
+        select_manufacturer.innerHTML = '';
         modal_form_product.style.display = 'none';
         hideCover();
     };
@@ -14,8 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
         getQS('.modal-title').innerHTML = 'Добавление товара';
         ajax('GET', '/admin/index/edit/?id=&ajax=true', '', function (data) {
             let product = JSON.parse(data);
-            let select_category = getQS('.select-category');
-            let select_manufacturer = getQS('.select-manufacturer');
+
             for (let j = 0; j < product.categories.length; j++) {
                 let el = cE('option');
                 el.value = product.categories[j].id;
@@ -155,8 +158,6 @@ document.addEventListener('DOMContentLoaded', function(){
             ajax('GET', '/admin/index/edit/' + params, '', function (data) {
                 let inputs = modal_form_product.getElementsByTagName('input');
                 let product = JSON.parse(data);
-                let select_category = getQS('.select-category');
-                let select_manufacturer = getQS('.select-manufacturer');
                 for (let j = 0; j < product.categories.length; j++) {
                     let el = cE('option');
                     if (product.categories[j].id === product.category_id) {
