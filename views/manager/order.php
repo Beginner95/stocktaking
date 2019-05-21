@@ -9,15 +9,15 @@
             </header>
         </section>
         <section class="items">
-            <table>
+            <table id="indextable">
                 <thead class="item-head">
                 <tr>
-                    <th>№</th>
-                    <th>Заказ</th>
-                    <th>Менеджер</th>
-                    <th>Кол-во товаров</th>
-                    <th>На сумму</th>
-                    <th>Дата</th>
+                    <th><a href="javascript:SortTable(0,'T');">№</a></th>
+                    <th><a href="javascript:SortTable(0,'T');">Заказ</a></th>
+                    <th><a href="javascript:SortTable(0,'T');">Менеджер</a></th>
+                    <th><a href="javascript:SortTable(2,'N');">Кол-во товаров</a></th>
+                    <th><a href="javascript:SortTable(2,'N');">На сумму</a></th>
+                    <th><a href="javascript:SortTable(3,'D','mdy');">Дата</a></th>
                     <th>Действия</th>
                 </tr>
                 </thead>
