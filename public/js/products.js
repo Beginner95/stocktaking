@@ -273,13 +273,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function calc(){
         let sum = 0;
+        let profit = 0;
         let quantity = 0;
         for(let i = 0; i < prod_price.length; i++) {
             sum += +prod_price[i].innerHTML.replace(/ /g, '') * +prod_quantity[i].value;
             quantity += +prod_quantity[i].value;
+            profit += +prod_markup[i].value.replace(/ /g, '') * +prod_quantity[i].value;
         }
+
         getQS('.total-sum').innerHTML = moneyFormat(sum);
         getQS('.quantity').innerHTML = quantity;
+        getQS('.total-sum-profit').innerHTML = moneyFormat(profit);
     }
     calc();
 });
