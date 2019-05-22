@@ -54,6 +54,7 @@
         <section class="stock">
             <div class="quantity-product">Количество товаров в базе: <span class="quantity"></span> шт.</div>
             <div class="all-price-total">На сумму: <span class="total-sum"></span> руб.</div>
+            <div class="all-price-total">Прибыль: <span class="total-sum-profit"></span> руб.</div>
         </section>
         <section class="block-btn">
             <a href="#" class="add-product" id="add_product">Добавить товар</a>
